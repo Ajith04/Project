@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="./Style.css" />
+  </head>
+  <body>
+    <!-- Login-Page-Card -->
+    <div class="card">
+      <h1 class="loginHeading">Administrator login</h1>
+      <div class="frm">
+        <div class="row">
+          <div class="col"><label for="">User name :</label></div>
+          <div class="col"><input type="text" id="username"/></div>
+        </div>
+        <div class="row">
+          <div class="col"><label for="">Password :</label></div>
+          <div class="col"><input type="password" id="loginPassword"/></div>
+        </div>
+        <div class="btn">
+          <button class="primaryBtn" id="loginButton">Login</button>
+        </div>
+      </div>
+      <p class="changePasswordLabel" id="changePasswordLabel">
+        Change Password
+      </p>
+    </div>
+
+    <!-- Change-Password-Modal -->
+    <div class="modalContainer" id="modalContainer">
+      <div class="card changePasswordModal" id="changePasswordModal">
+        <div class="closediv">
+          <span class="close" id="close">&times;</span>
+        </div>
+        <h1 class="loginHeading">Change Password</h1>
+        <div class="row">
+          <div class="col"><label for="">Old Password :</label></div>
+          <div class="col"><input type="password"/></div>
+        </div>
+        <div class="row">
+          <div class="col"><label for="">New Password :</label></div>
+          <div class="col"><input type="password"/></div>
+        </div>
+        <div class="row">
+          <div class="col"><label for="">Confirm Password :</label></div>
+          <div class="col"><input type="password"/></div>
+        </div>
+        <div class="btnRow">
+          <button class="secondaryBtn" id="cancel">Cancel</button>
+          <button class="primaryBtn">Change</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./adminLogin.js"></script>
+  </body>
+</html>
