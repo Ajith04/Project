@@ -1,14 +1,17 @@
-import {getAdmin} from './api.js';
+import {getAdmin, editAdmin} from './api.js';
 
 async function adminLogin() {
-      let loginButton = document.getElementById("loginButton");
+
+    const admin = await getAdmin();
+    let loginButton = document.getElementById("loginButton");
 
       loginButton.onclick = async function(){
-            const admin = await getAdmin();
-            const adminfinal = admin[0];
+
+            
             let username = document.getElementById("username").value;
             let loginPassword = document.getElementById("loginPassword").value;
-          if(username === adminfinal.username && loginPassword === adminfinal.password){
+
+          if(admin.find(e => e.username === username) && admin.find(e => e.password === loginPassword)){
               window.location.href = "adminDashboard.html";
           }
           else{
@@ -16,6 +19,33 @@ async function adminLogin() {
            
           }
       }
+
+
+
+        let changePassword = document.getElementById("changePassword");
+
+        
+        changePassword.onclick = async function(){
+        let oldPassword = document.getElementById("oldPassword").value;
+        let newPassword = document.getElementById("newPassword").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        
+
+        if (admin.find(e => e.password === oldPassword)){
+            if(newPassword === confirmPassword){
+                editAdmin(newPassword);
+                document.getElementById("changePasswordError").innerText = "Successfully changed!";
+            }
+            else{
+                document.getElementById("changePasswordError").innerText = "Confirm password should match new password!";
+            }
+        }else{
+            document.getElementById("changePasswordError").innerText = "Type your old password correctly!";
+        }
+
+      }
+
+      
   }
   
   adminLogin();
