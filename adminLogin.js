@@ -11,11 +11,11 @@ async function adminLogin() {
             let username = document.getElementById("username").value;
             let loginPassword = document.getElementById("loginPassword").value;
 
-          if(admin.find(e => e.username === username) && admin.find(e => e.password === loginPassword)){
+          if(await admin.find(e => e.username === username) && await admin.find(e => e.password === loginPassword)){
               window.location.href = "adminDashboard.html";
           }
           else{
-            document.getElementById("error_message").innerText = "Please check your User name or Password!";
+            document.getElementById("error_message").innerText = "Please check your Username or Password!";
            
           }
       }
@@ -26,21 +26,23 @@ async function adminLogin() {
 
         
         changePassword.onclick = async function(){
+            
         let oldPassword = document.getElementById("oldPassword").value;
         let newPassword = document.getElementById("newPassword").value;
         let confirmPassword = document.getElementById("confirmPassword").value;
         
 
-        if (admin.find(e => e.password === oldPassword)){
-            if(newPassword === confirmPassword){
-                editAdmin(newPassword);
-                document.getElementById("changePasswordError").innerText = "Successfully changed!";
+        if (newPassword === confirmPassword){
+            if(await admin.find(e => e.password === oldPassword)){
+                await editAdmin(newPassword);
+                alert("Admin Password Successfully changed!");
             }
             else{
-                document.getElementById("changePasswordError").innerText = "Confirm password should match new password!";
+                document.getElementById("changePasswordError").innerText = "Type your old password correctly!";
             }
         }else{
-            document.getElementById("changePasswordError").innerText = "Type your old password correctly!";
+            document.getElementById("changePasswordError").innerText = "Confirm password should match new password!";
+            
         }
 
       }

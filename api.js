@@ -6,10 +6,19 @@ export async function getAdmin() {
 
 
   export async function editAdmin(newPassword){
-    const response = await fetch('http://localhost:3000/admin', {
-    method: 'PUT',
+    await fetch('http://localhost:3000/admin/1', {
+    method: 'PATCH',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ password: newPassword })
   })      
+}
+
+export async function addStudents(obj){
+  await fetch('http://localhost:3000/students',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"name":obj.Name, "mobile":obj.Mobile, "course":obj.Course, "date":obj.Date, "email":obj.Email, "address":obj.Address, "description":obj.Description})
+  })
+
 }
     

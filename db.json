@@ -1,6 +1,22 @@
 {
-  "admin": [{
+  "admin": [
+    {
+      "id": "1",
       "username": "admin",
       "password": "admin"
-            }]
+    }
+  ],
+  "students": [
+    {
+      "id": "1e2a",
+      "name": "Ajith",
+      "mobile": "0755255050",
+      "course": "HTML",
+      "date": "1990-11-04",
+      "email": "sritharanajith04@gmail.com",
+      "address": "New road",
+      "description": "Next month"
+    }
+  ],
+  "courses": []
 }
