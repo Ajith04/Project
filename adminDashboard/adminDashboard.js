@@ -1,27 +1,102 @@
 import {addStudents, getStudentById, updateStudent} from '../api.js';
 
+
+
 let offCanvas = document.getElementById("offCanvas");
 let menu1 = document.getElementById('menu1');
 let menu2 = document.getElementById("menu2");
-let container = document.getElementById("container");
+let studentManagement = document.getElementById("studentManagement");
 let itec = document.getElementById("itec");
+let topbar = document.getElementById("topbar");
+let dashboard = document.getElementById("dashboard");
+let courseManagement = document.getElementById("courseManagement");
+
+
+
+let tabDashboard = document.getElementById("tabDashboard");
+let tabStudentManagement = document.getElementById("tabStudentManagement");
+let tabCourseManagement = document.getElementById("tabCourseManagement");
+let tabFeeManagement = document.getElementById("tabFeeManagement");
+let tabInstituteManagement = document.getElementById("tabInstituteManagement");
+let tabStudyMaterials = document.getElementById("tabStudyMaterials");
+
+tabDashboard.onclick = function(){
+studentManagement.style.display = "none";
+courseManagement.style.display = "none";
+dashboard.style.display = "flex";
+tabDashboard.style.backgroundColor = "white";
+tabDashboard.style.color = "black";
+tabDashboard.style.borderRight = "none";
+
+tabStudentManagement.style.backgroundColor = "#07C6A3";
+tabStudentManagement.style.color = "white";
+tabStudentManagement.style.borderRight = "1px solid black";
+
+tabCourseManagement.style.backgroundColor = "#07C6A3";
+tabCourseManagement.style.color = "white";
+tabCourseManagement.style.borderRight = "1px solid black";
+}
+
+tabStudentManagement.onclick = function(){
+    dashboard.style.display = "none";
+    courseManagement.style.display = "none";
+    studentManagement.style.display = "flex"; 
+    tabStudentManagement.style.backgroundColor = "white";
+    tabStudentManagement.style.color = "black";
+    tabStudentManagement.style.borderRight = "none";
+
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "white";
+    tabDashboard.style.borderRight = "1px solid black";
+
+    tabCourseManagement.style.backgroundColor = "#07C6A3";
+    tabCourseManagement.style.color = "white";
+    tabCourseManagement.style.borderRight = "1px solid black";
+    }
+
+tabCourseManagement.onclick = function(){
+    dashboard.style.display = "none";
+    studentManagement.style.display = "none";
+    courseManagement.style.display = "flex";
+    tabCourseManagement.style.backgroundColor = "white";
+    tabCourseManagement.style.color = "black";
+    tabCourseManagement.style.borderRight = "none";
+
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "white";
+    tabDashboard.style.borderRight = "1px solid black";
+
+    tabStudentManagement.style.backgroundColor = "#07C6A3";
+    tabStudentManagement.style.color = "white";
+    tabStudentManagement.style.borderRight = "1px solid black";
+    }
 
 menu1.onclick = function(){
     offCanvas.style.display = "none";
-    container.style.width = "100%";
+    topbar.style.width = "100%";
+    studentManagement.style.width = "100%";
+    courseManagement.style.width = "100%";
+    dashboard.style.width = "100%";
     menu2.style.display = "block";
     itec.innerText = "Information Technology Education Centre";
+
 }
 
 menu2.onclick = function(){
     offCanvas.style.display = "block";
-    container.style.width = "75%";
+    tabDashboard.style.backgroundColor = "white";
+    tabDashboard.style.color = "black";
+    tabDashboard.style.borderRight = "none";
+    topbar.style.width = "75%";
+    topbar.style.position= "absolute";
+    topbar.style.right = "0";
+    studentManagement.style.width = "75%";
+    courseManagement.style.width = "75%";
+    dashboard.style.width = "75%";
     menu2.style.display = "none";
     itec.innerText = "ITEC";
     offCanvas.style.position = "absolute";
     offCanvas.style.top = "0";
-    offCanvas.style.animation = "ease";
-    offCanvas.style.transition = "2s";
 }
 
 let addStudent = document.getElementById("addStudent");
@@ -155,6 +230,25 @@ let viewStudent = document.getElementById("viewStudent");
 
 viewStudent.onclick = function(){
     window.location.href = "../viewStudents/viewStudents.html";
+}
+
+let addCourse = document.getElementById("addCourse");
+
+addCourse.onclick = function(){
+    let addCourseModal = document.getElementById("addCourseModal");
+    addCourseModal.style.display = "block";
+}
+
+let addCourseClose = document.getElementById("addCourseClose");
+let addCourseCancel = document.getElementById("addCourseCancel");
+let addCourseModal = document.getElementById("addCourseModal");
+
+addCourseClose.onclick = function(){
+    addCourseModal.style.display = "none";
+}
+
+addCourseCancel.onclick = function(){
+    addCourseModal.style.display = "none";
 }
 
 

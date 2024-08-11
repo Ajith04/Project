@@ -17,22 +17,22 @@
         </div>
         <div>
         <ul>
-            <li><span class="material-symbols-outlined sm iconPadding">account_circle</span><h3>Dashboard</h3></li>
-            <li><span class="material-symbols-outlined sm iconPadding">account_circle</span><h3>Student Management</h3></li>
-            <li><span class="material-symbols-outlined sm iconPadding">menu_book</span><h3>Course Management</h3></li>
-            <li><span class="material-symbols-outlined sm iconPadding">payments</span><h3>Fee Management</h3></li>
-            <li><span class="material-symbols-outlined sm iconPadding">account_balance</span><h3>Institute Management</h3></li>
-            <li><span class="material-symbols-outlined sm iconPadding">upload</span><h3>Study Materials</h3></li>
+            <li id="tabDashboard"><span class="material-symbols-outlined sm iconPadding">grid_view</span><h3>Dashboard</h3></li>
+            <li id="tabStudentManagement"><span class="material-symbols-outlined sm iconPadding">account_circle</span><h3>Student Management</h3></li>
+            <li id="tabCourseManagement"><span class="material-symbols-outlined sm iconPadding">menu_book</span><h3>Course Management</h3></li>
+            <li id="tabFeeManagement"><span class="material-symbols-outlined sm iconPadding">payments</span><h3>Fee Management</h3></li>
+            <li id="tabInstituteManagement"><span class="material-symbols-outlined sm iconPadding">account_balance</span><h3>Institute Management</h3></li>
+            <li id="tabStudeymaterials"><span class="material-symbols-outlined sm iconPadding">upload</span><h3>Study Materials</h3></li>
         </ul>
     </div>
     </div>
 
-    <!-- ................................................................................................ -->
+    
     <!-- Main Body -->
-<div class="container" id="container">
+
     <!-- ................................................................................................... -->
     <!-- Top Bar -->
-    <div class="topbar">
+    <div class="topbar" id="topbar">
         <div class="left">
         <span class="material-symbols-outlined iconPadding" id="menu2">menu</span>
         <h3 id="itec">Information Technology Education Center</h3>
@@ -42,8 +42,17 @@
     </div>
     </div>
 <!-- ......................................................................................................... -->
-    <!-- Menu Body -->
-<div class="box">
+
+<!-- Dashboard Dynamic Body -->
+<div class="dashboard" id="dashboard">
+    <h2>AdminDashboard</h2>
+</div>
+
+
+
+
+    <!-- student Management Dynamic Body -->
+<div class="container" id="studentManagement">
     <div class="row">
         <div class="col">
             <div class="icon add" id="addStudent">
@@ -72,8 +81,6 @@
             <h2 class="menuTitle">Remove Student</h2>
         </div>
     </div>
-</div>
-<!-- ...................................................................................................... -->
 </div>
 
 <!-- ......................................................................................................... -->
@@ -240,6 +247,75 @@
     </div>  
 </div>
  
+    <!-- Course Management Dynamic Body -->
+    <div class="container" id="courseManagement">
+        <div class="row">
+            <div class="col">
+                <div class="icon add" id="addCourse">
+                    <img src="../assets/icons/add.png" alt="Add" class="ico">
+                </div>
+                <h2 class="menuTitle">Add New Course</h2>
+            </div>
+            <div class="col">
+                <div class="icon edit" id="">
+                    <img src="../assets/icons/edit.png" alt="Edit" class="ico">
+                </div>
+                <h2 class="menuTitle">Edit Course Details</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="icon view" id="">
+                    <img src="../assets/icons/view.png" alt="View" class="ico">
+                </div>
+                <h2 class="menuTitle">View All Courses</h2>
+            </div>
+            <div class="col">
+                <div class="icon delete">
+                    <img src="../assets/icons/remove.png" alt="Delete" class="ico">
+                </div>
+                <h2 class="menuTitle">Remove Course</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Course Modal -->
+<div class="modalContainer" id="addCourseModal">
+    <div class="addStudentModal addCourseBody">
+        <div class="editTopRow">
+            <span class="close"><p class="closeButton" id="addCourseClose">&times;</p></span>
+            <h2 class="editHeading">Add New Course</h2>
+        </div>
+    <div class="row firstRow">
+        <div class="modalCol"><label for="courseid">Course ID : </label></div>
+        <div class="modalCol"><input type="text" id=""></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="coursename">Course Name : </label></div>
+        <div class="modalCol"><input type="text" id=""></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="duration">Duration : </label></div>
+        <div class="modalCol"><input type="text" id=""></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="fee">Fee : </label></div>
+        <div class="modalCol"><input type="text" id=""></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="instructor">Instructor : </label></div>
+        <div class="modalCol"><input type="text" id=""></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="syllabus">Syllabus : </label></div>
+        <div class="modalCol"><textarea name="" id=""></textarea></div>
+    </div>
+    <div class="btnRow">
+        <button class="secondaryBtn" id="addCourseCancel">Cancel</button>
+        <button class="primaryBtn" id="">Add</button>
+          </div>
+    </div>
+
 
     <script src="./adminDashboard.js" type="module"></script>
         

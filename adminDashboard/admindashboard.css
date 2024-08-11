@@ -24,11 +24,29 @@
     color: white;
 }
 
-.container{
+.dashboard{
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
     width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
 }
 
 .logo{
@@ -67,7 +85,7 @@
 h3{    
     font-family:'Exo', Courier, monospace;
     font-size: 20px;
-    font-weight: 300;
+    /* font-weight: 300; */
     margin-left: 20px;
     overflow:hidden;
 }
@@ -93,19 +111,7 @@ ul{
 
 
 li:hover{
-    background-color: #F4E666;
-    color: black;
     border-left: 5px solid black;
-    border-right: none;
-}
-
-
-.box{
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
 .row{
@@ -409,6 +415,14 @@ select:hover{
 
 .editBtnRow{
     margin-bottom: 20px;
+}
+
+.addCourseBody{
+    background-color: #80C574;
+}
+
+.firstRow{
+    margin-top: 20px;
 }
 
 
