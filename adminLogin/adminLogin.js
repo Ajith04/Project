@@ -1,4 +1,4 @@
-import {getAdmin, editAdmin} from './api.js';
+import {getAdmin, editAdmin} from '../api.js';
 
 async function adminLogin() {
 
@@ -12,7 +12,7 @@ async function adminLogin() {
             let loginPassword = document.getElementById("loginPassword").value;
 
           if(await admin.find(e => e.username === username) && await admin.find(e => e.password === loginPassword)){
-              window.location.href = "adminDashboard.html";
+              window.location.href = "../adminDashboard/adminDashboard.html";
           }
           else{
             document.getElementById("error_message").innerText = "Please check your Username or Password!";
@@ -34,8 +34,10 @@ async function adminLogin() {
 
         if (newPassword === confirmPassword){
             if(await admin.find(e => e.password === oldPassword)){
+                document.getElementById("changePasswordError").innerText = "";
                 await editAdmin(newPassword);
                 alert("Admin Password Successfully changed!");
+                
             }
             else{
                 document.getElementById("changePasswordError").innerText = "Type your old password correctly!";

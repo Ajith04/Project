@@ -1,4 +1,4 @@
-import {addStudents} from './api.js';
+import {addStudents, getStudentById} from '../api.js';
 
 let offCanvas = document.getElementById("offCanvas");
 let menu1 = document.getElementById('menu1');
@@ -88,6 +88,62 @@ followupAdd.onclick = async function(){
     await addStudents(studentobj);
 
 }
+
+let editStudent = document.getElementById("editStudent");
+
+editStudent.onclick = function(){
+document.getElementById("editContainer").style.display = "block";
+}
+
+let search = document.getElementById("search");
+
+search.onclick = async function(){
+    let editDynamic = document.getElementById("editDynamic");
+    editDynamic.innerHTML = "";
+    let id = document.getElementById("searchId").value;
+    const singleStudent = await getStudentById(id);
+    
+    
+    
+    const editDynamicInside = document.createElement('div');
+    editDynamicInside.innerHTML = `<div class="row">
+        <div class="modalCol"><label for="name">N.I.C No : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.id} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">F Name : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.fname} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">L Name : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.lname} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">Course : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.course} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">Batch : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.batch} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">Mobile : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.mobile} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">Email : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.email} disabled></div>
+    </div>
+    <div class="row">
+        <div class="modalCol"><label for="name">Address : </label></div>
+        <div class="modalCol"><input type="text" id="" value=${singleStudent.address} disabled></div>
+    </div>
+    `;
+
+    editDynamic.appendChild(editDynamicInside);
+    
+}
+
 
 
 

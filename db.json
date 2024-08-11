@@ -6,7 +6,7 @@
       "password": "admin"
     }
   ],
-  "students": [
+  "followup": [
     {
       "id": "1e2a",
       "name": "Ajith",
@@ -16,6 +16,18 @@
       "email": "sritharanajith04@gmail.com",
       "address": "New road",
       "description": "Next month"
+    }
+  ],
+  "students":[
+    {
+      "id":"903090979v",
+      "fname":"Ajith",
+      "lname":"Sritharan",
+      "course":"Java",
+      "batch":"IV",
+      "mobile":"0755255050",
+      "email":"sritharanajith04@gmail.com",
+      "address":"New road"
     }
   ],
   "courses": []

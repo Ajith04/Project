@@ -50,10 +50,17 @@
     justify-content: between;
 }
 
+.notify{
+    margin-right: 20px;
+}
+
+.iconPadding{
+    padding: 10px;
+}
+
 .material-symbols-outlined{
     color: white;
-    padding: 10px;
-    margin-right: 20px;
+    
     cursor: pointer;
 }
 
@@ -126,6 +133,16 @@ li:hover{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+}
+
+.menuTitle{
+    margin-top: 20px;
+}
+
+.ico:hover{
+    transform:rotate(360deg);
+    transition: 1s;
 }
 
 h2{
@@ -170,7 +187,7 @@ h2{
     transform: translate(-50%, -50%);
     z-index: 2;
     animation: slide 0.5s;
-    height: 520px;
+    height: 540px;
     width: 380px;
     background-color: rgb(255, 255, 255);
     box-shadow: 1px 1px 10px  black;
@@ -187,6 +204,7 @@ h2{
 .modalCol{
     display: flex;
     justify-content: right;
+    align-items: center;
     
 }
 
@@ -204,6 +222,7 @@ input{
     box-shadow: 1px 1px 5px rgb(51, 51, 51);
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 6px;
 }
 
 input:hover{
@@ -211,7 +230,10 @@ input:hover{
 }
 
 textarea{
+    border: none;
     border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(51, 51, 51);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .toprow{
@@ -257,9 +279,9 @@ textarea{
      color: white;
  }
 
- .close:hover{
-    color: rgb(90, 89, 89);
+.closeButton:hover{
     cursor: pointer;
+    color: rgb(90, 89, 89);
 }
 
 .btnRow{
@@ -322,6 +344,7 @@ textarea{
 
 select{
     width: 200px;
+    height: 30px;
     border: none;
     box-shadow: 1px 1px 5px black ;
     border-radius: 5px;
@@ -331,6 +354,54 @@ select:hover{
     border: 1px solid rgb(2, 139, 250);
 }
 
+.editStudentModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: slide 0.5s;
+    height: 540px;
+    width: 380px;
+    background-color: #00D2C6;
+    box-shadow: 1px 1px 10px  black;
+    border-radius: 15px;
+}
+
+.editTopRow{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60px;
+    background-color: #007296;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.editHeading{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: -12px;
+    
+}
+
+.editRow{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.editCol{
+    display: flex;
+    justify-content: center;
+}
+.search:hover{
+    color: rgb(90, 89, 89);
+}
 
 
 
