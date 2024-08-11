@@ -1,4 +1,4 @@
-import {addStudents, getStudentById} from '../api.js';
+import {addStudents, getStudentById, updateStudent} from '../api.js';
 
 let offCanvas = document.getElementById("offCanvas");
 let menu1 = document.getElementById('menu1');
@@ -95,54 +95,77 @@ editStudent.onclick = function(){
 document.getElementById("editContainer").style.display = "block";
 }
 
+let editClose = document.getElementById("editClose");
+editClose.onclick = function(){
+    document.getElementById("editContainer").style.display = "none";
+    
+}
+
 let search = document.getElementById("search");
 
 search.onclick = async function(){
-    let editDynamic = document.getElementById("editDynamic");
-    editDynamic.innerHTML = "";
     let id = document.getElementById("searchId").value;
     const singleStudent = await getStudentById(id);
     
-    
-    
-    const editDynamicInside = document.createElement('div');
-    editDynamicInside.innerHTML = `<div class="row">
-        <div class="modalCol"><label for="name">N.I.C No : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.id} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">F Name : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.fname} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">L Name : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.lname} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">Course : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.course} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">Batch : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.batch} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">Mobile : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.mobile} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">Email : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.email} disabled></div>
-    </div>
-    <div class="row">
-        <div class="modalCol"><label for="name">Address : </label></div>
-        <div class="modalCol"><input type="text" id="" value=${singleStudent.address} disabled></div>
-    </div>
-    `;
+    document.getElementById("editDynamic").style.display = "block";
 
-    editDynamic.appendChild(editDynamicInside);
+    document.getElementById("seId").value = singleStudent.id;
+    document.getElementById("seFname").value = singleStudent.fname;
+    document.getElementById("seLname").value = singleStudent.lname;
+    document.getElementById("seCourse").value = singleStudent.course;
+    document.getElementById("seBatch").value = singleStudent.batch;
+    document.getElementById("seMobile").value = singleStudent.mobile;
+    document.getElementById("seEmail").value = singleStudent.email;
+    document.getElementById("seAddress").value = singleStudent.address;
     
 }
+
+let studentEdit = document.getElementById("studentEdit");
+studentEdit.onclick = function(){
+seFname.disabled = false;
+seLname.disabled = false;
+seCourse.disabled = false;
+seBatch.disabled = false;
+seMobile.disabled = false;
+seEmail.disabled = false;
+seAddress.disabled = false;
+}
+
+
+let studentUpdate = document.getElementById("studentUpdate");
+
+studentUpdate.onclick = async function(){
+    let putId = document.getElementById("searchId").value;
+
+    let seFname = document.getElementById("seFname").value;
+    let seLname = document.getElementById("seLname").value;
+    let seCourse = document.getElementById("seCourse").value;
+    let seBatch = document.getElementById("seBatch").value;
+    let seMobile = document.getElementById("seMobile").value;
+    let seEmail = document.getElementById("seEmail").value;
+    let seAddress = document.getElementById("seAddress").value;
+
+    const putStudents = {Fname:seFname, Lname:seLname, Course:seCourse, Batch:seBatch, Mobile:seMobile, Email:seEmail, Address:seAddress};
+
+    await updateStudent(putId, putStudents);
+
+}
+
+let viewStudent = document.getElementById("viewStudent");
+
+viewStudent.onclick = function(){
+    window.location.href = "../viewStudents/viewStudents.html";
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

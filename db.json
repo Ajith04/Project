@@ -18,16 +18,17 @@
       "description": "Next month"
     }
   ],
-  "students":[
+  "students": [
     {
-      "id":"903090979v",
-      "fname":"Ajith",
-      "lname":"Sritharan",
-      "course":"Java",
-      "batch":"IV",
-      "mobile":"0755255050",
-      "email":"sritharanajith04@gmail.com",
-      "address":"New road"
+      "id": "903090979v",
+      "fname": "Thanura",
+      "lname": "Sritharan",
+      "course": "JAVA",
+      "dateofjoin": "01-01-2024",
+      "batch": "IV",
+      "mobile": "0755255050",
+      "email": "sritharanajith04@gmail.com",
+      "address": "New road"
     }
   ],
   "courses": []

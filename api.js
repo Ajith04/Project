@@ -29,5 +29,20 @@ export async function getStudentById(id) {
   return data;
 }
 
+export async function updateStudent(putId, putStudents) {
+  const response = await fetch(`http://localhost:3000/students/${putId}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({fname:putStudents.Fname, lname:putStudents.Lname, course:putStudents.Course, batch:putStudents.Batch, mobile:putStudents.Mobile, email:putStudents.Email, address:putStudents.Address})
+  });
+}
+
+export async function getStudents() {
+  const response = await fetch('http://localhost:3000/students');
+  const data = await response.json();
+  return data;
+}
+
+
 
     

@@ -361,7 +361,7 @@ select:hover{
     transform: translate(-50%, -50%);
     z-index: 2;
     animation: slide 0.5s;
-    height: 540px;
+    /* height: 610px; */
     width: 380px;
     background-color: #00D2C6;
     box-shadow: 1px 1px 10px  black;
@@ -402,6 +402,17 @@ select:hover{
 .search:hover{
     color: rgb(90, 89, 89);
 }
+
+.edContainer{
+    display: none;
+}
+
+.editBtnRow{
+    margin-bottom: 20px;
+}
+
+
+
 
 
 

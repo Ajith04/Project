@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students</title>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .topbar{
+        background-color: #007296;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family:'Exo', Courier, monospace;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .row{
+        display: flex;
+        justify-content: space-around;
+        background-color: #D99340;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        font-weight: bolder;
+        
+    }
+
+    .col{
+        padding: 20px;
+       
+    }
+
+    .table{
+        margin-top: 50px;
+    }
+</style>  
+</head>
+<body>
+<div class="topbar"><h3>View All Students</h3></div>
+<div id="table" class="table">
+    <div class="row">
+        <div class="col">Student ID</div>
+        <div class="col">Name</div>
+        <div class="col">Batch</div>
+        <div class="col">Course</div>
+        <div class="col">Date of Join</div>
+        <div class="col">Mobile</div>
+        <div class="col">Email</div>
+        <div class="col">Address</div>
+    </div>
+
+</div>
+
+    <script src="./viewStudents.js" type="module"></script>
+</body>
+</html>

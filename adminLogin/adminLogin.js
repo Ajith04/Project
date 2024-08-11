@@ -56,24 +56,28 @@ async function adminLogin() {
 
 
 
+  let label = document.getElementById("changePasswordLabel");
+        label.onclick = function(){
+        modal.style.display = "block";
+  }
 
-let label = document.getElementById("changePasswordLabel");
 
 let modal = document.getElementById("modalContainer");
 
 let close = document.getElementById("close");
-let cancel = document.getElementById("cancel");
-
-label.onclick = function(){
-    modal.style.display = "block";
-}
-
 close.onclick = function(){
     modal.style.display = "none";
 
 }
 
+let cancel = document.getElementById("cancel");
 cancel.onclick = function(){
     modal.style.display = "none";
 }
+
+
+
+
+
+
 
