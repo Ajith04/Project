@@ -73,4 +73,18 @@ export async function addNewStudent(obj){
 }
 
 
-    
+export async function getSingleCourse(id) {
+  const response = await fetch(`http://localhost:3000/courses/${id}`);
+  const data = await response.json();
+  return data;
+}
+
+
+export async function courseUpdate(id, obj) {
+  const response = await fetch(`http://localhost:3000/courses/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({coursename:obj.eCourseName, duration:obj.eDuration, fees:obj.eFee, instructor:obj.eInstructor, syllabus:obj.eSyllabus})
+  });
+}
+

@@ -285,7 +285,7 @@
                 <h2 class="menuTitle">Add New Course</h2>
             </div>
             <div class="col">
-                <div class="icon edit" id="">
+                <div class="icon edit" id="editCourse">
                     <img src="../assets/icons/edit.png" alt="Edit" class="ico">
                 </div>
                 <h2 class="menuTitle">Edit Course Details</h2>
@@ -342,6 +342,57 @@
         <button class="secondaryBtn" id="addCourseCancel">Cancel</button>
         <button class="primaryBtn" id="addCourseBtn">Add</button>
           </div>
+    </div>
+</div>
+
+<!-- Edit Course Details Modal -->
+<div class="modalContainer" id="editCourseModal">
+    <div class="editStudentModal editStudentBg">
+        <div class="editTopRow">
+            <span class="close"><p class="closeButton" id="editcourseModalClose">&times;</p></span>
+            <h2 class="editHeading">Edit Course Details</h2>
+            
+        </div>
+
+    <!-- .................................................................................................. -->
+    <!--Edit Course Modal body -->
+    <div class="followup" id="">
+    <div class="editRow">
+        <div><label for="name" class="editCol">Search</label></div>
+        <div><input type="text" id="searchCourseId" placeholder="Search by course ID..." class="editCol"></div>
+        <div><span class="material-symbols-outlined editCol search" id="courseSearch">search</span></div>
+    </div>
+    <div id="editCourseDynamic" class="edContainer">
+        <div class="row">
+            <div class="modalCol"><label for="name">Course ID : </label></div>
+            <div class="modalCol"><input type="text" id="editCourseId" disabled></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="name">Course Name : </label></div>
+            <div class="modalCol"><input type="text" id="editCourseName" disabled></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="name">Duration : </label></div>
+            <div class="modalCol"><input type="text" id="editDuration" disabled></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="name">Fee : </label></div>
+            <div class="modalCol"><input type="text" id="editFee" disabled></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="name">Instructor : </label></div>
+            <div class="modalCol"><input type="text" id="editInstructor" disabled></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="name">Syllabus : </label></div>
+            <div class="modalCol"><input type="text" id="editSyllabus" disabled></div>
+        </div>
+        <div class="btnRow editBtnRow">
+            <button class="secondaryBtn" id="courseEditBtn">Edit</button>
+            <button class="primaryBtn" id="courseUpdate">Update</button>
+              </div>
+    </div>
+    </div>
     </div>
 
 

@@ -1,4 +1,4 @@
-import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent} from '../api.js';
+import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, getSingleCourse, courseUpdate} from '../api.js';
 
 
 
@@ -321,29 +321,50 @@ courseList.forEach(e => {
     selectCourse.appendChild(option);
 });
 
+let editCourse = document.getElementById("editCourse");
+editCourse.onclick = function(){
+    let editCourseModal = document.getElementById("editCourseModal");
+    editCourseModal.style.display = "block";
+}
 
+document.getElementById("editcourseModalClose").onclick = function(){
+    let editCourseModal = document.getElementById("editCourseModal");
+    editCourseModal.style.display = "none";
+}
 
+document.getElementById("courseSearch").onclick = async function(){
+    let searchCourseId = document.getElementById("searchCourseId").value;
+    const singleCourse = await getSingleCourse(searchCourseId);
 
+    let editCourseDynamic = document.getElementById("editCourseDynamic");
+    editCourseDynamic.style.display = "block";
 
+    document.getElementById("editCourseId").value = singleCourse.id;
+    document.getElementById("editCourseName").value = singleCourse.coursename;
+    document.getElementById("editDuration").value = singleCourse.duration;
+    document.getElementById("editFee").value = singleCourse.fees;
+    document.getElementById("editInstructor").value = singleCourse.instructor;
+    document.getElementById("editSyllabus").value = singleCourse.syllabus;
+}
 
+document.getElementById("courseEditBtn").onclick = function(){
+    editCourseName.disabled = false;
+    editDuration.disabled = false;
+    editFee.disabled = false;
+    editInstructor.disabled = false;
+    editSyllabus.disabled = false;
+}
 
+document.getElementById("courseUpdate").onclick = async function(){
+    let searchCourseId = document.getElementById("searchCourseId").value;
 
+    let editCourseName = document.getElementById("editCourseName").value;
+    let editDuration = document.getElementById("editDuration").value
+    let editFee = document.getElementById("editFee").value;
+    let editInstructor = document.getElementById("editInstructor").value;
+    let editSyllabus = document.getElementById("editSyllabus").value;
 
+    const editCourseObj = {eCourseName:editCourseName, eDuration:editDuration, eFee:editFee, eInstructor:editInstructor, eSyllabus:editSyllabus}
 
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-
-
-
-
+    await courseUpdate(searchCourseId, editCourseObj);
+}
