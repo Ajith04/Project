@@ -1,4 +1,4 @@
-import {addStudents, getStudentById, updateStudent} from '../api.js';
+import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent} from '../api.js';
 
 
 
@@ -164,6 +164,25 @@ followupAdd.onclick = async function(){
 
 }
 
+let registerAdd  = document.getElementById("registerAdd");
+registerAdd.onclick = async function (){
+    let stuId = document.getElementById("stuId").value;
+    let stuFName = document.getElementById("stuFName").value;
+    let stuLName = document.getElementById("stuLName").value;
+    let selectCourse = document.getElementById("selectCourse").value;
+    let stuBatch = document.getElementById("stuBatch").value;
+    let stuDate = document.getElementById("stuDate").value;
+    let stuMobile = document.getElementById("stuMobile").value;
+    let stuEmail = document.getElementById("stuEmail").value;
+    let stuAddress = document.getElementById("stuAddress").value;
+    let stuRegFee = document.getElementById("stuRegFee").value;
+    let stuAddiFee = document.getElementById("stuAddiFee").value;
+
+    let studentObject = {stuid:stuId, stufname:stuFName, stulname:stuLName, stucourse:selectCourse, stubatch:stuBatch, studate:stuDate, stumobile:stuMobile, stuemail:stuEmail, stuaddress:stuAddress, sturegfee:stuRegFee, stuaddifee:stuAddiFee};
+
+    await addNewStudent(studentObject);
+}
+
 let editStudent = document.getElementById("editStudent");
 
 editStudent.onclick = function(){
@@ -185,8 +204,8 @@ search.onclick = async function(){
     document.getElementById("editDynamic").style.display = "block";
 
     document.getElementById("seId").value = singleStudent.id;
-    document.getElementById("seFname").value = singleStudent.fname;
-    document.getElementById("seLname").value = singleStudent.lname;
+    document.getElementById("seFname").value = singleStudent.firstname;
+    document.getElementById("seLname").value = singleStudent.lastname;
     document.getElementById("seCourse").value = singleStudent.course;
     document.getElementById("seBatch").value = singleStudent.batch;
     document.getElementById("seMobile").value = singleStudent.mobile;
@@ -250,6 +269,58 @@ addCourseClose.onclick = function(){
 addCourseCancel.onclick = function(){
     addCourseModal.style.display = "none";
 }
+
+let removeStudent = document.getElementById("removeStudent");
+let removeStudetModal = document.getElementById("removeStudetModal");
+removeStudent.onclick = function(){
+    removeStudetModal.style.display = "block";
+}
+
+document.getElementById("removeClose").onclick = function(){
+    removeStudetModal.style.display = "none";
+}
+let removeDynamic = document.getElementById("removeDynamic");
+
+document.getElementById("removeSearch").onclick = async function(){
+    let removeSearchId = document.getElementById("removeSearchId").value;
+    let student = await getStudentById(removeSearchId);
+    document.getElementById("removeId").innerText = student.id;
+    document.getElementById("removeName").innerText = student.firstname;
+    document.getElementById("removeBatch").innerText = student.batch;
+    removeDynamic.style.display = "flex";
+}
+
+document.getElementById("removeBtn").onclick = async function(){
+    let removeSearchId = document.getElementById("removeSearchId").value;
+    await removeSingleStudent(removeSearchId);
+    removeDynamic.style.display = "none";
+
+}
+
+document.getElementById("addCourseBtn").onclick = async function(){
+    let addCourseId = document.getElementById("addCourseId").value;
+    let addCourseName = document.getElementById("addCourseName").value;
+    let addCourseDuration = document.getElementById("addCourseDuration").value;
+    let addCourseFee = document.getElementById("addCourseFee").value;
+    let addCourseInstructor = document.getElementById("addCourseInstructor").value;
+    let addCourseSyllabus = document.getElementById("addCourseSyllabus").value;
+
+    let courseObj = {courseId:addCourseId, courseName:addCourseName, courseDuration:addCourseDuration, courseFee:addCourseFee, courseInstructor:addCourseInstructor, courseSyllabus:addCourseSyllabus};
+
+    await addNewCourse(courseObj);
+
+}
+
+const courseList = await getCourses();
+let selectCourse = document.getElementById("selectCourse");
+
+courseList.forEach(e => {
+    let option = document.createElement('option');
+    option.value = e.coursename;
+    option.text = e.coursename;
+    selectCourse.appendChild(option);
+});
+
 
 
 

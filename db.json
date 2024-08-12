@@ -8,28 +8,65 @@
   ],
   "followup": [
     {
-      "id": "1e2a",
+      "id": "b778",
       "name": "Ajith",
       "mobile": "0755255050",
-      "course": "HTML",
-      "date": "1990-11-04",
+      "course": "Java",
+      "date": "2024-08-12",
       "email": "sritharanajith04@gmail.com",
       "address": "New road",
-      "description": "Next month"
+      "description": "Next Month will join"
     }
   ],
-  "students": [
+  "students": [],
+  "courses": [
     {
-      "id": "903090979v",
-      "fname": "Thanura",
-      "lname": "Sritharan",
-      "course": "JAVA",
-      "dateofjoin": "01-01-2024",
-      "batch": "IV",
-      "mobile": "0755255050",
-      "email": "sritharanajith04@gmail.com",
-      "address": "New road"
+      "id": "001",
+      "coursename": "HTML",
+      "duration": "01 Month",
+      "fees": "1500.00",
+      "instructor": "Ajith",
+      "syllabus": "Null"
+    },
+    {
+      "id": "002",
+      "coursename": "CSS",
+      "duration": "1.5 Month",
+      "fees": "3000.00",
+      "instructor": "Thayuran",
+      "syllabus": "1. Basci CSS\n2. Grid\n3. Flex\n4. Animation"
+    },
+    {
+      "id": "003",
+      "coursename": "JavaScript",
+      "duration": "3 Months",
+      "fees": "5000.00",
+      "instructor": "Gowsi",
+      "syllabus": "Basic and Advance"
+    },
+    {
+      "id": "004",
+      "coursename": "C#",
+      "duration": "3 Months",
+      "fees": "6000.00",
+      "instructor": "Kajitha",
+      "syllabus": ""
+    },
+    {
+      "id": "005",
+      "coursename": "Angular",
+      "duration": "02 months",
+      "fees": "5000.00",
+      "instructor": "Safeek",
+      "syllabus": "Complete"
+    },
+    {
+      "id": "006",
+      "coursename": "Java",
+      "duration": "5 months",
+      "fees": "8000.00",
+      "instructor": "Aaruran",
+      "syllabus": "Springboot\nMicroServices"
     }
-  ],
-  "courses": []
+  ]
 }

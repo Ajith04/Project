@@ -43,9 +43,10 @@ label{
 input{
     box-shadow: 1px 1px 5px black;
     border:none;
-    height: 30px;
+    height: 28px;
     width:200px;
     border-radius: 10px;
+    padding: 4px;
 }
 
 .frm1{

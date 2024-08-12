@@ -231,6 +231,10 @@ input{
     padding: 6px;
 }
 
+textarea{
+    padding: 6px;
+}
+
 input:hover{
     border: 1px solid rgb(2, 139, 250);
 }
@@ -374,6 +378,10 @@ select:hover{
     border-radius: 15px;
 }
 
+.editStudentBg{
+    background-color: #00D2C6;
+}
+
 .editTopRow{
     display: flex;
     flex-direction: column;
@@ -425,6 +433,40 @@ select:hover{
     margin-top: 20px;
 }
 
+.deleteStudentBg{
+    background-color: #C54D4D;
+}
+
+.removeDynamic{
+    background-color:rgb(182, 211, 212);
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: none;
+}
+
+.id, .name, .batch{
+    border-right: 1px solid black;
+}
+
+.removeBtn{
+    height: 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color:#C54D4D ;
+    border: none;
+    box-shadow: 1px 1px 5px black;
+    color: white;
+    cursor: pointer;
+}
 
 
 

@@ -33,7 +33,7 @@ export async function updateStudent(putId, putStudents) {
   const response = await fetch(`http://localhost:3000/students/${putId}`, {
     method: 'PATCH',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({fname:putStudents.Fname, lname:putStudents.Lname, course:putStudents.Course, batch:putStudents.Batch, mobile:putStudents.Mobile, email:putStudents.Email, address:putStudents.Address})
+    body: JSON.stringify({firstname:putStudents.Fname, lastname:putStudents.Lname, course:putStudents.Course, batch:putStudents.Batch, mobile:putStudents.Mobile, email:putStudents.Email, address:putStudents.Address})
   });
 }
 
@@ -43,6 +43,34 @@ export async function getStudents() {
   return data;
 }
 
+
+export async function removeSingleStudent(id) {
+  await fetch(`http://localhost:3000/students/${id}`, {
+  method:'DELETE'
+  });
+}
+
+export async function addNewCourse(obj){
+  await fetch('http://localhost:3000/courses',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"id":obj.courseId, "coursename":obj.courseName, "duration":obj.courseDuration, "fees":obj.courseFee, "instructor":obj.courseInstructor, "syllabus":obj.courseSyllabus})
+  })
+}
+
+export async function getCourses() {
+  const response = await fetch('http://localhost:3000/courses');
+  const data = await response.json();
+  return data;
+}
+
+export async function addNewStudent(obj){
+  await fetch('http://localhost:3000/students',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"id":obj.stuid, "firstname":obj.stufname, "lastname":obj.stulname, "course":obj.stucourse, "batch":obj.stubatch, "date":obj.studate, "mobile":obj.stumobile, "email":obj.stuemail, "address":obj.stuaddress, "regfee":obj.sturegfee, "addifee":obj.stuaddifee})
+  })
+}
 
 
     

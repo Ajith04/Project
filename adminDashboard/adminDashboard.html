@@ -75,7 +75,7 @@
             <h2 class="menuTitle">View All Students</h2>
         </div>
         <div class="col">
-            <div class="icon delete">
+            <div class="icon delete" id="removeStudent">
                 <img src="../assets/icons/remove.png" alt="Delete" class="ico">
             </div>
             <h2 class="menuTitle">Remove Student</h2>
@@ -135,47 +135,47 @@
     <div class="register" id="register">
         <div class="row">
             <div class="modalCol"><label for="name">N.I.C No :</label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" id="stuId"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="mobile">F Name :</label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" id="stuFName"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="course">L Name : </label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" id="stuLName"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="date">Course : </label></div>
-            <div class="modalCol"><select name="" id=""></select></div>
+            <div class="modalCol"><select name="" id="selectCourse"></select></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="email">Batch : </label></div>
-            <div class="modalCol"><select name="" id=""></select></div>
+            <div class="modalCol"><input type="text" id="stuBatch"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="address">Date : </label></div>
-            <div class="modalCol"><input type="date"></div>
+            <div class="modalCol"><input type="date" id="stuDate"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="description">Mobile : </label></div>
-            <div class="modalCol"><input type="tel" name="" id=""></div>
+            <div class="modalCol"><input type="tel" id="stuMobile"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="description">Email : </label></div>
-            <div class="modalCol"><input type="email" name="" id=""></div>
+            <div class="modalCol"><input type="email" id="stuEmail"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="description">Address : </label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" id="stuAddress"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="description">Reg Fee : </label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" value="1000.00" id="stuRegFee"></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="description">Additional Fee : </label></div>
-            <div class="modalCol"><input type="text"></div>
+            <div class="modalCol"><input type="text" value="0.00" id="stuAddiFee"></div>
         </div>
         <div class="btnRow">
             <button class="secondaryBtn" id="registerCancel">Cancel</button>
@@ -190,7 +190,7 @@
 <!-- ....................................................................................................... -->
 <!-- Edit Student Details Modal -->
 <div class="modalContainer" id="editContainer">
-    <div class="editStudentModal">
+    <div class="editStudentModal editStudentBg">
         <div class="editTopRow">
             <span class="close"><p class="closeButton" id="editClose">&times;</p></span>
             <h2 class="editHeading">Edit Student Details</h2>
@@ -198,7 +198,7 @@
         </div>
 
     <!-- .................................................................................................. -->
-    <!--Edit Student body -->
+    <!--Edit Student Modal body -->
     <div class="followup" id="">
     <div class="editRow">
         <div><label for="name" class="editCol">Search</label></div>
@@ -246,6 +246,34 @@
     </div>
     </div>  
 </div>
+
+
+<!-- Remove Student Modal -->
+<div class="modalContainer" id="removeStudetModal">
+    <div class="editStudentModal deleteStudentBg">
+        <div class="editTopRow">
+            <span class="close"><p class="closeButton" id="removeClose">&times;</p></span>
+            <h2 class="editHeading">Remove Student</h2>
+            
+        </div>
+
+    <!-- .................................................................................................. -->
+    <!--Remove Student Modal body -->
+    <div class="followup" id="">
+    <div class="editRow">
+        <div><label for="name" class="editCol">Search</label></div>
+        <div><input type="text" id="removeSearchId" placeholder="Search Student by ID..." class="editCol"></div>
+        <div><span class="material-symbols-outlined editCol search" id="removeSearch">search</span></div>
+    </div>
+    <div id="removeDynamic" class="removeDynamic">
+        <div class="col id" id="removeId"></div>
+        <div class="col name" id="removeName"></div>
+        <div class="col batch" id="removeBatch"></div>
+        <div class="col btnCol"><button class="removeBtn" id="removeBtn">X</button></div>
+    </div>
+    </div>
+    </div>  
+</div>
  
     <!-- Course Management Dynamic Body -->
     <div class="container" id="courseManagement">
@@ -288,33 +316,36 @@
         </div>
     <div class="row firstRow">
         <div class="modalCol"><label for="courseid">Course ID : </label></div>
-        <div class="modalCol"><input type="text" id=""></div>
+        <div class="modalCol"><input type="text" id="addCourseId"></div>
     </div>
     <div class="row">
         <div class="modalCol"><label for="coursename">Course Name : </label></div>
-        <div class="modalCol"><input type="text" id=""></div>
+        <div class="modalCol"><input type="text" id="addCourseName"></div>
     </div>
     <div class="row">
         <div class="modalCol"><label for="duration">Duration : </label></div>
-        <div class="modalCol"><input type="text" id=""></div>
+        <div class="modalCol"><input type="text" id="addCourseDuration"></div>
     </div>
     <div class="row">
         <div class="modalCol"><label for="fee">Fee : </label></div>
-        <div class="modalCol"><input type="text" id=""></div>
+        <div class="modalCol"><input type="text" id="addCourseFee"></div>
     </div>
     <div class="row">
         <div class="modalCol"><label for="instructor">Instructor : </label></div>
-        <div class="modalCol"><input type="text" id=""></div>
+        <div class="modalCol"><input type="text" id="addCourseInstructor"></div>
     </div>
     <div class="row">
         <div class="modalCol"><label for="syllabus">Syllabus : </label></div>
-        <div class="modalCol"><textarea name="" id=""></textarea></div>
+        <div class="modalCol"><textarea name="" id="addCourseSyllabus"></textarea></div>
     </div>
     <div class="btnRow">
         <button class="secondaryBtn" id="addCourseCancel">Cancel</button>
-        <button class="primaryBtn" id="">Add</button>
+        <button class="primaryBtn" id="addCourseBtn">Add</button>
           </div>
     </div>
+
+
+    
 
 
     <script src="./adminDashboard.js" type="module"></script>

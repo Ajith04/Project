@@ -21,7 +21,7 @@ async function getAllStudents(){
 
         let fnamecell = document.createElement('div');
         fnamecell.style.padding = "20px";
-        fnamecell.textContent = e.fname;
+        fnamecell.textContent = e.firstname;
         row.appendChild(fnamecell);
 
         let batchcell = document.createElement('div');
@@ -36,7 +36,7 @@ async function getAllStudents(){
 
         let dateofjoincell = document.createElement('div');
         dateofjoincell.style.padding = "20px";
-        dateofjoincell.textContent = e.dateofjoin;
+        dateofjoincell.textContent = e.date;
         row.appendChild(dateofjoincell);
 
         let mobilecell = document.createElement('div');
