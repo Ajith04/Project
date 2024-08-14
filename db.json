@@ -18,16 +18,22 @@
       "description": "Next Month will join"
     }
   ],
-  "students": [],
-  "courses": [
+  "students": [
     {
-      "id": "001",
-      "coursename": "HTML",
-      "duration": "02 Months",
-      "fees": "3000.00",
-      "instructor": "Narthanan",
-      "syllabus": "Nill"
-    },
+      "id": "903090979V",
+      "firstname": "Ajith",
+      "lastname": "Sritharan",
+      "course": "CSS",
+      "batch": "V",
+      "date": "2024-08-14",
+      "mobile": "0755255050",
+      "email": "sritharanajith04@gmail.com",
+      "address": "New road",
+      "regfee": "1000.00",
+      "addifee": "3000.00"
+    }
+  ],
+  "courses": [
     {
       "id": "002",
       "coursename": "CSS",

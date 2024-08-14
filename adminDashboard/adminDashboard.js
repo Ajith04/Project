@@ -1,4 +1,4 @@
-import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, getSingleCourse, courseUpdate} from '../api.js';
+import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, getSingleCourse, courseUpdate, deleteSingleCourse} from '../api.js';
 
 
 
@@ -99,11 +99,16 @@ menu2.onclick = function(){
     offCanvas.style.top = "0";
 }
 
+
 let addStudent = document.getElementById("addStudent");
 
 addStudent.onclick = function(){
     modalContainer.style.display = "block";
 }
+
+
+// let addStudentShortcut = document.getElementById("addStudentShortcut");
+// addStudentShortcut.appendChild(addStudent);
 
 
 let tab1 = document.getElementById("tab1");
@@ -147,9 +152,10 @@ registerCancel.onclick = function(){
     modalContainer.style.display = "none";
 }
 
-let followupAdd = document.getElementById("followupAdd");
 
+let followupAdd = document.getElementById("followupAdd");
 followupAdd.onclick = async function(){
+    
     let name = document.getElementById("name").value;
     let mobile = document.getElementById("mobile").value;
     let course = document.getElementById("course").value;
@@ -159,10 +165,9 @@ followupAdd.onclick = async function(){
     let description = document.getElementById("description").value;
 
     let studentobj = {Name:name, Mobile:mobile, Course:course, Date:date, Email:email, Address:address, Description:description};
-
+    
     await addStudents(studentobj);
-
-}
+};
 
 let registerAdd  = document.getElementById("registerAdd");
 registerAdd.onclick = async function (){
@@ -181,6 +186,10 @@ registerAdd.onclick = async function (){
     let studentObject = {stuid:stuId, stufname:stuFName, stulname:stuLName, stucourse:selectCourse, stubatch:stuBatch, studate:stuDate, stumobile:stuMobile, stuemail:stuEmail, stuaddress:stuAddress, sturegfee:stuRegFee, stuaddifee:stuAddiFee};
 
     await addNewStudent(studentObject);
+
+    let a = document.createElement('a');
+    a.href = `mailto:${stuEmail}?subject=WelCome to ITEC&body=Hi ${stuFName}, Congratulations... %0A%0AYou just have registered in ITEC on ${stuDate} to follow the course ${selectCourse}. Please find the link below of our student portal. You can signup with your N.I.C No ${stuId} you used for your course registration. Thank you.%0A%0A%0A The Student portal link - https://www.itecstudentportal.com`;
+    a.click();
 }
 
 let editStudent = document.getElementById("editStudent");
@@ -248,7 +257,10 @@ studentUpdate.onclick = async function(){
 let viewStudent = document.getElementById("viewStudent");
 
 viewStudent.onclick = function(){
-    window.location.href = "../viewStudents/viewStudents.html";
+    let a= document.createElement('a');
+    a.href= '../viewStudents/viewStudents.html';
+    a.target= '_blank';
+    a.click();
 }
 
 let addCourse = document.getElementById("addCourse");
@@ -257,6 +269,9 @@ addCourse.onclick = function(){
     let addCourseModal = document.getElementById("addCourseModal");
     addCourseModal.style.display = "block";
 }
+
+// let addCourseShortcut = document.getElementById("addCourseShortcut");
+// addCourseShortcut.appendChild(addCourse);
 
 let addCourseClose = document.getElementById("addCourseClose");
 let addCourseCancel = document.getElementById("addCourseCancel");
@@ -367,4 +382,40 @@ document.getElementById("courseUpdate").onclick = async function(){
     const editCourseObj = {eCourseName:editCourseName, eDuration:editDuration, eFee:editFee, eInstructor:editInstructor, eSyllabus:editSyllabus}
 
     await courseUpdate(searchCourseId, editCourseObj);
+}
+
+let viewCourse = document.getElementById("viewCourse");
+viewCourse.onclick = function(){
+    let a= document.createElement('a');
+    a.href= '../viewCourses/viewCourses.html';
+    a.target= '_blank';
+    a.click();
+}
+
+let removeCourse = document.getElementById("removeCourse");
+let removeCourseModal = document.getElementById("removeCourseModal");
+removeCourse.onclick = function(){
+    removeCourseModal.style.display = "block";
+}
+
+document.getElementById("removeCourseClose").onclick = function(){
+    removeCourseModal.style.display = "none";
+}
+
+let removeCourseSearch = document.getElementById("removeCourseSearch");
+removeCourseSearch.onclick = async function(){
+    let courseSearchId = document.getElementById("courseSearchId").value;
+    let singleCourse = await getSingleCourse(courseSearchId);
+
+    document.getElementById("removeCourseDynamic").style.display = "flex";
+    document.getElementById("cId").innerText = singleCourse.id;
+    document.getElementById("cName").innerText = singleCourse.coursename;
+    document.getElementById("cInstructor").innerText = singleCourse.instructor;  
+}
+
+let deleteCourse = document.getElementById("deleteCourse");
+deleteCourse.onclick = async function(){
+    document.getElementById("removeCourseDynamic").style.display = "none";
+    let courseSearchId = document.getElementById("courseSearchId").value;
+    await deleteSingleCourse(courseSearchId);
 }

@@ -5,57 +5,63 @@ async function getAllStudents(){
 
     let allStudents = await getStudents();
 
-    let table = document.getElementById("table");
+    let tbody = document.getElementById("tbody");
 
     allStudents.forEach(e => {
-        let row = document.createElement('div');
-        row.style.display = "flex";
+        let row = document.createElement('tr');
         row.style.backgroundColor = "#80C574"
-        row.style.border = "1px solid black";
-        row.style.justifyContent = "space-around";
 
-        let idcell = document.createElement('div');
+        let idcell = document.createElement('td');
         idcell.style.padding = "20px";
+        idcell.style.textAlign = "center";
         idcell.textContent = e.id;
         row.appendChild(idcell);
 
-        let fnamecell = document.createElement('div');
+        let fnamecell = document.createElement('td');
         fnamecell.style.padding = "20px";
+        fnamecell.style.textAlign = "center";
         fnamecell.textContent = e.firstname;
         row.appendChild(fnamecell);
 
-        let batchcell = document.createElement('div');
+        let batchcell = document.createElement('td');
         batchcell.style.padding = "20px";
+        batchcell.style.textAlign = "center";
         batchcell.textContent = e.batch;
         row.appendChild(batchcell);
 
-        let coursecell = document.createElement('div');
+        let coursecell = document.createElement('td');
         coursecell.style.padding = "20px";
+        coursecell.style.textAlign = "center";
         coursecell.textContent = e.course;
         row.appendChild(coursecell);
 
-        let dateofjoincell = document.createElement('div');
+        let dateofjoincell = document.createElement('td');
         dateofjoincell.style.padding = "20px";
+        dateofjoincell.style.textAlign = "center";
         dateofjoincell.textContent = e.date;
         row.appendChild(dateofjoincell);
 
-        let mobilecell = document.createElement('div');
+        let mobilecell = document.createElement('td');
         mobilecell.style.padding = "20px";
+        mobilecell.style.textAlign = "center";
         mobilecell.textContent = e.mobile;
         row.appendChild(mobilecell);
 
-        let emailcell = document.createElement('div');
+        let emailcell = document.createElement('td');
         emailcell.style.padding = "20px";
-        emailcell.style.overflow = "hidden"
+        emailcell.style.textAlign = "center";
         emailcell.textContent = e.email;
         row.appendChild(emailcell);
 
-        let addresscell = document.createElement('div');
+        let addresscell = document.createElement('td');
         addresscell.style.padding = "20px";
+        addresscell.style.textAlign = "center";
         addresscell.textContent = e.address;
         row.appendChild(addresscell);
 
-        table.appendChild(row);
+        
+
+        tbody.appendChild(row);
 
     
 });

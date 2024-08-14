@@ -19,7 +19,6 @@ export async function addStudents(obj){
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({"name":obj.Name, "mobile":obj.Mobile, "course":obj.Course, "date":obj.Date, "email":obj.Email, "address":obj.Address, "description":obj.Description})
   })
-
 }
 
 
@@ -62,6 +61,7 @@ export async function getCourses() {
   const response = await fetch('http://localhost:3000/courses');
   const data = await response.json();
   return data;
+  
 }
 
 export async function addNewStudent(obj){
@@ -85,6 +85,13 @@ export async function courseUpdate(id, obj) {
     method: 'PATCH',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({coursename:obj.eCourseName, duration:obj.eDuration, fees:obj.eFee, instructor:obj.eInstructor, syllabus:obj.eSyllabus})
+  });
+}
+
+
+export async function deleteSingleCourse(id) {
+  await fetch(`http://localhost:3000/courses/${id}`, {
+  method:'DELETE'
   });
 }
 
