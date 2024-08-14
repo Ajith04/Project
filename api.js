@@ -19,14 +19,15 @@ export async function addStudents(obj){
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({"name":obj.Name, "mobile":obj.Mobile, "course":obj.Course, "date":obj.Date, "email":obj.Email, "address":obj.Address, "description":obj.Description})
   })
+  
 }
 
 
-export async function getStudentById(id) {
-  const response = await fetch(`http://localhost:3000/students/${id}`);
-  const data = await response.json();
-  return data;
-}
+// export async function getStudentById(id) {
+//   const response = await fetch(`http://localhost:3000/students/${id}`);
+//   const data = await response.json();
+//   return data;
+// }
 
 export async function updateStudent(putId, putStudents) {
   const response = await fetch(`http://localhost:3000/students/${putId}`, {
@@ -73,11 +74,11 @@ export async function addNewStudent(obj){
 }
 
 
-export async function getSingleCourse(id) {
-  const response = await fetch(`http://localhost:3000/courses/${id}`);
-  const data = await response.json();
-  return data;
-}
+// export async function getSingleCourse(id) {
+//   const response = await fetch(`http://localhost:3000/courses/${id}`);
+//   const data = await response.json();
+//   return data;
+// }
 
 
 export async function courseUpdate(id, obj) {
@@ -94,4 +95,5 @@ export async function deleteSingleCourse(id) {
   method:'DELETE'
   });
 }
+
 

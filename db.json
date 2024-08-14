@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "123"
+      "password": "admin"
     }
   ],
   "followup": [
@@ -16,32 +16,20 @@
       "email": "sritharanajith04@gmail.com",
       "address": "New road",
       "description": "Next Month will join"
-    }
-  ],
-  "students": [
-    {
-      "id": "903090979V",
-      "firstname": "Ajith",
-      "lastname": "Sritharan",
-      "course": "CSS",
-      "batch": "V",
-      "date": "2024-08-14",
-      "mobile": "0755255050",
-      "email": "sritharanajith04@gmail.com",
-      "address": "New road",
-      "regfee": "1000.00",
-      "addifee": "3000.00"
-    }
-  ],
-  "courses": [
-    {
-      "id": "002",
-      "coursename": "CSS",
-      "duration": "1.5 Month",
-      "fees": "3000.00",
-      "instructor": "Thayuran",
-      "syllabus": "1. Basci CSS\n2. Grid\n3. Flex\n4. Animation"
     },
+    {
+      "id": "386d",
+      "name": "rgrethb",
+      "mobile": "fgnbfgb",
+      "course": "fgbnfg",
+      "date": "2024-07-31",
+      "email": "1234@gmail.com",
+      "address": "frgerfg",
+      "description": "rfgefb"
+    }
+  ],
+  "students": [],
+  "courses": [
     {
       "id": "003",
       "coursename": "JavaScript",

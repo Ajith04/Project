@@ -99,22 +99,22 @@
 
             <!-- ...................................................................................................... -->
             <!-- Follow-up -->
-            <div class="followup" id="followup">
+            <form class="followup" id="followup">
                 <div class="row">
                     <div class="modalCol"><label for="name">Name : </label></div>
-                    <div class="modalCol"><input type="text" id="name"></div>
+                    <div class="modalCol"><input type="text" id="name" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="mobile">Mobile : </label></div>
-                    <div class="modalCol"><input type="tel" id="mobile"></div>
+                    <div class="modalCol"><input type="tel" id="mobile" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="course">Course : </label></div>
-                    <div class="modalCol"><input type="text" id="course"></div>
+                    <div class="modalCol"><input type="text" id="course" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="date">Date : </label></div>
-                    <div class="modalCol"><input type="date" id="date"></div>
+                    <div class="modalCol"><input type="date" id="date" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="email">Email : </label></div>
@@ -130,20 +130,20 @@
                 </div>
                 <div class="btnRow">
                     <button class="secondaryBtn" id="followupCancel">Cancel</button>
-                    <button type="submit" class="primaryBtn" id="followupAdd">Add</button>
+                    <button type="submit" class="primaryBtn">Add</button>
                 </div>
-            </div>
+            </form>
                 <!-- ....................................................................................... -->
 
                 <!-- Register -->
-            <div class="register" id="register">
+            <form class="register" id="register">
                 <div class="row">
                     <div class="modalCol"><label for="name">N.I.C No :</label></div>
-                    <div class="modalCol"><input type="text" id="stuId"></div>
+                    <div class="modalCol"><input type="text" id="stuId" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="mobile">F Name :</label></div>
-                    <div class="modalCol"><input type="text" id="stuFName"></div>
+                    <div class="modalCol"><input type="text" id="stuFName" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="course">L Name : </label></div>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="date">Course : </label></div>
-                    <div class="modalCol"><select name="" id="selectCourse"></select></div>
+                    <div class="modalCol"><select name="" id="selectCourse" required></select></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="email">Batch : </label></div>
@@ -159,11 +159,11 @@
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="address">Date : </label></div>
-                    <div class="modalCol"><input type="date" id="stuDate"></div>
+                    <div class="modalCol"><input type="date" id="stuDate" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Mobile : </label></div>
-                    <div class="modalCol"><input type="tel" id="stuMobile"></div>
+                    <div class="modalCol"><input type="tel" id="stuMobile" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Email : </label></div>
@@ -175,7 +175,7 @@
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Reg Fee : </label></div>
-                    <div class="modalCol"><input type="text" value="1000.00" id="stuRegFee"></div>
+                    <div class="modalCol"><input type="text" value="1000.00" id="stuRegFee" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Additional Fee : </label></div>
@@ -183,9 +183,9 @@
                 </div>
                 <div class="btnRow">
                     <button class="secondaryBtn" id="registerCancel">Cancel</button>
-                    <button class="primaryBtn" id="registerAdd">Add</button>
+                    <button type="submit" class="primaryBtn">Add</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>  
     
@@ -208,44 +208,45 @@
                     <div><input type="text" id="searchId" placeholder="Search Student by ID..." class="editCol"></div>
                     <div><span class="material-symbols-outlined editCol search" id="search">search</span></div>
                 </div>
-                <div id="editDynamic" class="edContainer">
+                <form id="editDynamic" class="edContainer">
                     <div class="row">
                         <div class="modalCol"><label for="name">N.I.C No : </label></div>
                         <div class="modalCol"><input type="text" id="seId" disabled></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">F Name : </label></div>
-                        <div class="modalCol"><input type="text" id="seFname" disabled></div>
+                        <div class="modalCol"><input type="text" id="seFname" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">L Name : </label></div>
-                        <div class="modalCol"><input type="text" id="seLname" disabled></div>
+                        <div class="modalCol"><input type="text" id="seLname" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Course : </label></div>
-                        <div class="modalCol"><input type="text" id="seCourse" disabled></div>
+                        <div class="modalCol"><input type="text" id="seCourse" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Batch : </label></div>
-                        <div class="modalCol"><input type="text" id="seBatch" disabled></div>
+                        <div class="modalCol"><input type="text" id="seBatch" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Mobile : </label></div>
-                        <div class="modalCol"><input type="text" id="seMobile" disabled></div>
+                        <div class="modalCol"><input type="text" id="seMobile" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Email : </label></div>
-                        <div class="modalCol"><input type="text" id="seEmail" disabled></div>
+                        <div class="modalCol"><input type="text" id="seEmail" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Address : </label></div>
-                        <div class="modalCol"><input type="text" id="seAddress" disabled></div>
+                        <div class="modalCol"><input type="text" id="seAddress" disabled required></div>
                     </div>
                     <div class="btnRow editBtnRow">
-                        <button class="secondaryBtn" id="studentEdit">Edit</button>
-                        <button class="primaryBtn" id="studentUpdate">Update</button>
-                        </div>
-                </div>
+                        <button class="secondaryBtn" id="studentEdit" type="button">Edit</button>
+                        <button class="primaryBtn">Update</button>
+                    </div>
+                </form>
+                    <p id="errMessage"></p>
             </div> 
         </div>  
     </div>
@@ -274,6 +275,7 @@
                     <div class="col batch" id="removeBatch"></div>
                     <div class="col btnCol"><button class="removeBtn" id="removeBtn">X</button></div>
                 </div>
+                <p id="removeError"></p>
             </div>
         </div>
     </div>
@@ -319,34 +321,36 @@
                 <span class="close"><p class="closeButton" id="addCourseClose">&times;</p></span>
                 <h2 class="editHeading">Add New Course</h2>
             </div>
+            <form id="addCourseForm">
             <div class="row firstRow">
                 <div class="modalCol"><label for="courseid">Course ID : </label></div>
-                <div class="modalCol"><input type="text" id="addCourseId"></div>
+                <div class="modalCol"><input type="text" id="addCourseId" required></div>
             </div>
             <div class="row">
                 <div class="modalCol"><label for="coursename">Course Name : </label></div>
-                <div class="modalCol"><input type="text" id="addCourseName"></div>
+                <div class="modalCol"><input type="text" id="addCourseName" required></div>
             </div>
             <div class="row">
                 <div class="modalCol"><label for="duration">Duration : </label></div>
-                <div class="modalCol"><input type="text" id="addCourseDuration"></div>
+                <div class="modalCol"><input type="text" id="addCourseDuration" required></div>
             </div>
             <div class="row">
                 <div class="modalCol"><label for="fee">Fee : </label></div>
-                <div class="modalCol"><input type="text" id="addCourseFee"></div>
+                <div class="modalCol"><input type="text" id="addCourseFee" required></div>
             </div>
             <div class="row">
                 <div class="modalCol"><label for="instructor">Instructor : </label></div>
-                <div class="modalCol"><input type="text" id="addCourseInstructor"></div>
+                <div class="modalCol"><input type="text" id="addCourseInstructor" required></div>
             </div>
             <div class="row">
                 <div class="modalCol"><label for="syllabus">Syllabus : </label></div>
                 <div class="modalCol"><textarea name="" id="addCourseSyllabus"></textarea></div>
             </div>
             <div class="btnRow">
-                <button class="secondaryBtn" id="addCourseCancel">Cancel</button>
-                <button class="primaryBtn" id="addCourseBtn">Add</button>
+                <button class="secondaryBtn" id="addCourseCancel" type="button">Cancel</button>
+                <button type="submit" class="primaryBtn">Add</button>
             </div>
+        </form>
         </div>
     </div>
 
@@ -368,36 +372,37 @@
                     <div><input type="text" id="searchCourseId" placeholder="Search by course ID..." class="editCol"></div>
                     <div><span class="material-symbols-outlined editCol search" id="courseSearch">search</span></div>
                 </div>
-                <div id="editCourseDynamic" class="edContainer">
+                <form id="editCourseDynamic" class="edContainer">
                     <div class="row">
                         <div class="modalCol"><label for="name">Course ID : </label></div>
                         <div class="modalCol"><input type="text" id="editCourseId" disabled></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Course Name : </label></div>
-                        <div class="modalCol"><input type="text" id="editCourseName" disabled></div>
+                        <div class="modalCol"><input type="text" id="editCourseName" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Duration : </label></div>
-                        <div class="modalCol"><input type="text" id="editDuration" disabled></div>
+                        <div class="modalCol"><input type="text" id="editDuration" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Fee : </label></div>
-                        <div class="modalCol"><input type="text" id="editFee" disabled></div>
+                        <div class="modalCol"><input type="text" id="editFee" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Instructor : </label></div>
-                        <div class="modalCol"><input type="text" id="editInstructor" disabled></div>
+                        <div class="modalCol"><input type="text" id="editInstructor" disabled required></div>
                     </div>
                     <div class="row">
                         <div class="modalCol"><label for="name">Syllabus : </label></div>
                         <div class="modalCol"><input type="text" id="editSyllabus" disabled></div>
                     </div>
                     <div class="btnRow editBtnRow">
-                        <button class="secondaryBtn" id="courseEditBtn">Edit</button>
-                        <button class="primaryBtn" id="courseUpdate">Update</button>
+                        <button class="secondaryBtn" id="courseEditBtn" type="button">Edit</button>
+                        <button class="primaryBtn">Update</button>
                     </div>
-                </div>
+                </form>
+                <p id="courseError"></p>
             </div>
         </div>
     </div> 
@@ -426,11 +431,12 @@
                     <div class="col batch" id="cInstructor"></div>
                     <div class="col btnCol"><button class="removeBtn" id="deleteCourse">X</button></div>
                 </div>
+                <p id="removeCourseError"></p>
             </div>
         </div>
     </div>
 
-
+    
     <script src="./adminDashboard.js" type="module"></script>
         
 </body>

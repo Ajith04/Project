@@ -1,4 +1,4 @@
-import {addStudents, getStudentById, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, getSingleCourse, courseUpdate, deleteSingleCourse} from '../api.js';
+import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents} from '../api.js';
 
 
 
@@ -153,9 +153,9 @@ registerCancel.onclick = function(){
 }
 
 
-let followupAdd = document.getElementById("followupAdd");
-followupAdd.onclick = async function(){
-    
+
+document.getElementById("followup").addEventListener('submit', async function(event){
+    event.preventDefault();
     let name = document.getElementById("name").value;
     let mobile = document.getElementById("mobile").value;
     let course = document.getElementById("course").value;
@@ -165,13 +165,26 @@ followupAdd.onclick = async function(){
     let description = document.getElementById("description").value;
 
     let studentobj = {Name:name, Mobile:mobile, Course:course, Date:date, Email:email, Address:address, Description:description};
-    
     await addStudents(studentobj);
-};
+    event.target.reset();
+    
+    alert("Successfully added to follow-up list");
+    
+});
 
-let registerAdd  = document.getElementById("registerAdd");
-registerAdd.onclick = async function (){
+
+document.getElementById("register").addEventListener('submit', async function(event){
+    event.preventDefault();
     let stuId = document.getElementById("stuId").value;
+
+    let allStudents = await getStudents();
+    
+    if(await allStudents.find(e => e.id === stuId)){
+        alert("The Student ID is already exists");
+    
+    }
+    else{
+        
     let stuFName = document.getElementById("stuFName").value;
     let stuLName = document.getElementById("stuLName").value;
     let selectCourse = document.getElementById("selectCourse").value;
@@ -187,10 +200,14 @@ registerAdd.onclick = async function (){
 
     await addNewStudent(studentObject);
 
+    alert("Successfully added as new student");
+
     let a = document.createElement('a');
     a.href = `mailto:${stuEmail}?subject=WelCome to ITEC&body=Hi ${stuFName}, Congratulations... %0A%0AYou just have registered in ITEC on ${stuDate} to follow the course ${selectCourse}. Please find the link below of our student portal. You can signup with your N.I.C No ${stuId} you used for your course registration. Thank you.%0A%0A%0A The Student portal link - https://www.itecstudentportal.com`;
     a.click();
-}
+    event.target.reset();
+    }
+});
 
 let editStudent = document.getElementById("editStudent");
 
@@ -208,19 +225,31 @@ let search = document.getElementById("search");
 
 search.onclick = async function(){
     let id = document.getElementById("searchId").value;
-    const singleStudent = await getStudentById(id);
-    
-    document.getElementById("editDynamic").style.display = "block";
+    const wholeStudents = await getStudents();
 
-    document.getElementById("seId").value = singleStudent.id;
-    document.getElementById("seFname").value = singleStudent.firstname;
-    document.getElementById("seLname").value = singleStudent.lastname;
-    document.getElementById("seCourse").value = singleStudent.course;
-    document.getElementById("seBatch").value = singleStudent.batch;
-    document.getElementById("seMobile").value = singleStudent.mobile;
-    document.getElementById("seEmail").value = singleStudent.email;
-    document.getElementById("seAddress").value = singleStudent.address;
-    
+    if(await wholeStudents.find(e => e.id === id)){
+    let e = wholeStudents.find(e => e.id === id);
+    errMessage.textContent = "";
+    document.getElementById("editDynamic").style.display = "block";
+    document.getElementById("seId").value = e.id;
+    document.getElementById("seFname").value = e.firstname;
+    document.getElementById("seLname").value = e.lastname;
+    document.getElementById("seCourse").value = e.course;
+    document.getElementById("seBatch").value = e.batch;
+    document.getElementById("seMobile").value = e.mobile;
+    document.getElementById("seEmail").value = e.email;
+    document.getElementById("seAddress").value = e.address;
+    }
+    else{
+        let errMessage = document.getElementById("errMessage");
+        document.getElementById("editDynamic").style.display = "none";
+        errMessage.textContent = "No such record";
+        errMessage.style.color = "red";
+        errMessage.style.textAlign = "center";
+        errMessage.style.marginBottom = "20px";
+        errMessage.style.fontFamily = "Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
+    }
+   
 }
 
 let studentEdit = document.getElementById("studentEdit");
@@ -232,14 +261,12 @@ seBatch.disabled = false;
 seMobile.disabled = false;
 seEmail.disabled = false;
 seAddress.disabled = false;
-}
+};
 
 
-let studentUpdate = document.getElementById("studentUpdate");
-
-studentUpdate.onclick = async function(){
+document.getElementById("editDynamic").addEventListener('submit', async function(event){
+    event.preventDefault();
     let putId = document.getElementById("searchId").value;
-
     let seFname = document.getElementById("seFname").value;
     let seLname = document.getElementById("seLname").value;
     let seCourse = document.getElementById("seCourse").value;
@@ -251,8 +278,10 @@ studentUpdate.onclick = async function(){
     const putStudents = {Fname:seFname, Lname:seLname, Course:seCourse, Batch:seBatch, Mobile:seMobile, Email:seEmail, Address:seAddress};
 
     await updateStudent(putId, putStudents);
+    event.target.reset();
+    alert("Successfully updated");
 
-}
+});
 
 let viewStudent = document.getElementById("viewStudent");
 
@@ -298,22 +327,44 @@ let removeDynamic = document.getElementById("removeDynamic");
 
 document.getElementById("removeSearch").onclick = async function(){
     let removeSearchId = document.getElementById("removeSearchId").value;
-    let student = await getStudentById(removeSearchId);
-    document.getElementById("removeId").innerText = student.id;
-    document.getElementById("removeName").innerText = student.firstname;
-    document.getElementById("removeBatch").innerText = student.batch;
+    let student = await getStudents();
+
+    if(student.find(e => e.id === removeSearchId)){
+    let e = student.find(e => e.id === removeSearchId);
+    removeError.textContent = "";
     removeDynamic.style.display = "flex";
+    document.getElementById("removeId").innerText = e.id;
+    document.getElementById("removeName").innerText = e.firstname;
+    document.getElementById("removeBatch").innerText = e.batch;
+    }
+    else{
+        removeDynamic.style.display = "none";
+        let removeError = document.getElementById("removeError");
+        removeError.textContent = "No such record";
+        removeError.style.color = "White";
+        removeError.style.textAlign = "center";
+        removeError.style.marginBottom = "20px";
+        removeError.style.fontFamily = "Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
+    }
 }
 
 document.getElementById("removeBtn").onclick = async function(){
     let removeSearchId = document.getElementById("removeSearchId").value;
     await removeSingleStudent(removeSearchId);
     removeDynamic.style.display = "none";
+    alert("Successfully removed");
 
 }
 
-document.getElementById("addCourseBtn").onclick = async function(){
+document.getElementById("addCourseForm").addEventListener('submit', async function(event){
+    event.preventDefault();
+    let courseList = await getCourses();
     let addCourseId = document.getElementById("addCourseId").value;
+
+    if(await courseList.find(e => e.id === addCourseId)){
+        alert("The course ID is already exists");
+    }else{
+
     let addCourseName = document.getElementById("addCourseName").value;
     let addCourseDuration = document.getElementById("addCourseDuration").value;
     let addCourseFee = document.getElementById("addCourseFee").value;
@@ -323,8 +374,13 @@ document.getElementById("addCourseBtn").onclick = async function(){
     let courseObj = {courseId:addCourseId, courseName:addCourseName, courseDuration:addCourseDuration, courseFee:addCourseFee, courseInstructor:addCourseInstructor, courseSyllabus:addCourseSyllabus};
 
     await addNewCourse(courseObj);
+    event.target.reset();
+    alert("Successfully added");
+    }
+    
+    
 
-}
+});
 
 const courseList = await getCourses();
 let selectCourse = document.getElementById("selectCourse");
@@ -349,17 +405,31 @@ document.getElementById("editcourseModalClose").onclick = function(){
 
 document.getElementById("courseSearch").onclick = async function(){
     let searchCourseId = document.getElementById("searchCourseId").value;
-    const singleCourse = await getSingleCourse(searchCourseId);
+    const courseList = await getCourses();
 
+    if(await courseList.find(e => e.id === searchCourseId)){
+        courseError.innerText = "";
+    let e = await courseList.find(e => e.id === searchCourseId);
     let editCourseDynamic = document.getElementById("editCourseDynamic");
     editCourseDynamic.style.display = "block";
+    document.getElementById("editCourseId").value = e.id;
+    document.getElementById("editCourseName").value = e.coursename;
+    document.getElementById("editDuration").value = e.duration;
+    document.getElementById("editFee").value = e.fees;
+    document.getElementById("editInstructor").value = e.instructor;
+    document.getElementById("editSyllabus").value = e.syllabus;
+    }
+    else{
+        editCourseDynamic.style.display = "none";
+        let courseError = document.getElementById("courseError");
+        courseError.innerText = "No such record";
+        courseError.style.color = "red";
+        courseError.style.textAlign = "center";
+        courseError.style.marginBottom = "20px";
+        courseError.style.fontFamily = "Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
+    }
 
-    document.getElementById("editCourseId").value = singleCourse.id;
-    document.getElementById("editCourseName").value = singleCourse.coursename;
-    document.getElementById("editDuration").value = singleCourse.duration;
-    document.getElementById("editFee").value = singleCourse.fees;
-    document.getElementById("editInstructor").value = singleCourse.instructor;
-    document.getElementById("editSyllabus").value = singleCourse.syllabus;
+    
 }
 
 document.getElementById("courseEditBtn").onclick = function(){
@@ -370,7 +440,8 @@ document.getElementById("courseEditBtn").onclick = function(){
     editSyllabus.disabled = false;
 }
 
-document.getElementById("courseUpdate").onclick = async function(){
+document.getElementById("editCourseDynamic").addEventListener('submit', async function(event){
+    await event.preventDefault();
     let searchCourseId = document.getElementById("searchCourseId").value;
 
     let editCourseName = document.getElementById("editCourseName").value;
@@ -382,7 +453,10 @@ document.getElementById("courseUpdate").onclick = async function(){
     const editCourseObj = {eCourseName:editCourseName, eDuration:editDuration, eFee:editFee, eInstructor:editInstructor, eSyllabus:editSyllabus}
 
     await courseUpdate(searchCourseId, editCourseObj);
-}
+    event.target.reset();
+
+    alert("Successfully updated");
+});
 
 let viewCourse = document.getElementById("viewCourse");
 viewCourse.onclick = function(){
@@ -405,12 +479,26 @@ document.getElementById("removeCourseClose").onclick = function(){
 let removeCourseSearch = document.getElementById("removeCourseSearch");
 removeCourseSearch.onclick = async function(){
     let courseSearchId = document.getElementById("courseSearchId").value;
-    let singleCourse = await getSingleCourse(courseSearchId);
+    let courseList = await getCourses();
+
+    if(await courseList.find(e => e.id === courseSearchId)){
+        removeCourseError.innerText = "";
+        let e = courseList.find(e => e.id === courseSearchId);
 
     document.getElementById("removeCourseDynamic").style.display = "flex";
-    document.getElementById("cId").innerText = singleCourse.id;
-    document.getElementById("cName").innerText = singleCourse.coursename;
-    document.getElementById("cInstructor").innerText = singleCourse.instructor;  
+    document.getElementById("cId").innerText = e.id;
+    document.getElementById("cName").innerText = e.coursename;
+    document.getElementById("cInstructor").innerText = e.instructor; 
+    }else{
+        document.getElementById("removeCourseDynamic").style.display = "none";
+        let removeCourseError = document.getElementById("removeCourseError");
+        removeCourseError.innerText = "No such record";
+        removeCourseError.style.color = "white";
+        removeCourseError.style.textAlign = "center";
+        removeCourseError.style.marginBottom = "20px";
+        removeCourseError.style.fontFamily = "Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
+
+    } 
 }
 
 let deleteCourse = document.getElementById("deleteCourse");
@@ -418,4 +506,5 @@ deleteCourse.onclick = async function(){
     document.getElementById("removeCourseDynamic").style.display = "none";
     let courseSearchId = document.getElementById("courseSearchId").value;
     await deleteSingleCourse(courseSearchId);
+    alert("Successfully deleted");
 }
