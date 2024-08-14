@@ -3,8 +3,10 @@ import {getAdmin, editAdmin} from '../api.js';
 async function adminLogin() {
 
     const admin = await getAdmin();
-    let loginButton = document.getElementById("loginButton");
 
+// .......................................................................................................
+// Admin Login Validation
+    let loginButton = document.getElementById("loginButton");
       loginButton.onclick = async function(){
 
             
@@ -21,10 +23,9 @@ async function adminLogin() {
       }
 
 
-
+// .........................................................................................................
+// Change Password
         let changePassword = document.getElementById("changePassword");
-
-        
         changePassword.onclick = async function(){
             
         let oldPassword = document.getElementById("oldPassword").value;
@@ -46,30 +47,29 @@ async function adminLogin() {
             document.getElementById("changePasswordError").innerText = "Confirm password should match new password!";
             
         }
-
       }
-
-      
   }
   
   adminLogin();
 
-
-
+// ..............................................................
+// showing Change Password Modal
   let label = document.getElementById("changePasswordLabel");
         label.onclick = function(){
         modal.style.display = "block";
   }
 
-
+// ...............................................................
+// Hiding change Password Modal Using Close Button
 let modal = document.getElementById("modalContainer");
-
 let close = document.getElementById("close");
 close.onclick = function(){
     modal.style.display = "none";
 
 }
 
+// .............................................................
+// Hiding change Password Modal Using Cancel Button
 let cancel = document.getElementById("cancel");
 cancel.onclick = function(){
     modal.style.display = "none";

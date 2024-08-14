@@ -8,24 +8,14 @@
   ],
   "followup": [
     {
-      "id": "b778",
+      "id": "7177",
       "name": "Ajith",
       "mobile": "0755255050",
-      "course": "Java",
-      "date": "2024-08-12",
+      "course": "HTML",
+      "date": "2024-08-15",
       "email": "sritharanajith04@gmail.com",
       "address": "New road",
-      "description": "Next Month will join"
-    },
-    {
-      "id": "386d",
-      "name": "rgrethb",
-      "mobile": "fgnbfgb",
-      "course": "fgbnfg",
-      "date": "2024-07-31",
-      "email": "1234@gmail.com",
-      "address": "frgerfg",
-      "description": "rfgefb"
+      "description": ""
     }
   ],
   "students": [],

@@ -10,6 +10,9 @@ let itec = document.getElementById("itec");
 let topbar = document.getElementById("topbar");
 let dashboard = document.getElementById("dashboard");
 let courseManagement = document.getElementById("courseManagement");
+let feeManagement = document.getElementById("feeManagement");
+let instituteManagement = document.getElementById("instituteManagement");
+let studyMaterials = document.getElementById("studyMaterials");
 
 
 
@@ -20,27 +23,53 @@ let tabFeeManagement = document.getElementById("tabFeeManagement");
 let tabInstituteManagement = document.getElementById("tabInstituteManagement");
 let tabStudyMaterials = document.getElementById("tabStudyMaterials");
 
+// ...................................................................................................
+// Tab Navigation
+
+// Dashboard
 tabDashboard.onclick = function(){
-studentManagement.style.display = "none";
-courseManagement.style.display = "none";
-dashboard.style.display = "flex";
-tabDashboard.style.backgroundColor = "white";
-tabDashboard.style.color = "black";
-tabDashboard.style.borderRight = "none";
+    studentManagement.style.display = "none";
+    courseManagement.style.display = "none";
+    feeManagement.style.display = "none";
+    instituteManagement.style.display = "none";
+    studyMaterials.style.display = "none";
+    dashboard.style.display = "flex";
 
-tabStudentManagement.style.backgroundColor = "#07C6A3";
-tabStudentManagement.style.color = "white";
-tabStudentManagement.style.borderRight = "1px solid black";
+    tabDashboard.style.backgroundColor = "white";
+    tabDashboard.style.color = "black";
+    tabDashboard.style.borderRight = "none";
 
-tabCourseManagement.style.backgroundColor = "#07C6A3";
-tabCourseManagement.style.color = "white";
-tabCourseManagement.style.borderRight = "1px solid black";
+    tabStudentManagement.style.backgroundColor = "#07C6A3";
+    tabStudentManagement.style.color = "white";
+    tabStudentManagement.style.borderRight = "1px solid black";
+
+    tabCourseManagement.style.backgroundColor = "#07C6A3";
+    tabCourseManagement.style.color = "white";
+    tabCourseManagement.style.borderRight = "1px solid black";
+
+    tabFeeManagement.style.backgroundColor = "#07C6A3";
+    tabFeeManagement.style.color = "white";
+    tabFeeManagement.style.borderRight = "1px solid black";
+
+    tabInstituteManagement.style.backgroundColor = "#07C6A3";
+    tabInstituteManagement.style.color = "white";
+    tabInstituteManagement.style.borderRight = "1px solid black";
+
+    tabStudyMaterials.style.backgroundColor = "#07C6A3";
+    tabStudyMaterials.style.color = "white";
+    tabStudyMaterials.style.borderRight = "1px solid black";
 }
 
+// ........................................................................................
+// Student Management
 tabStudentManagement.onclick = function(){
     dashboard.style.display = "none";
     courseManagement.style.display = "none";
+    feeManagement.style.display = "none";
+    instituteManagement.style.display = "none";
+    studyMaterials.style.display = "none";
     studentManagement.style.display = "flex"; 
+
     tabStudentManagement.style.backgroundColor = "white";
     tabStudentManagement.style.color = "black";
     tabStudentManagement.style.borderRight = "none";
@@ -52,12 +81,30 @@ tabStudentManagement.onclick = function(){
     tabCourseManagement.style.backgroundColor = "#07C6A3";
     tabCourseManagement.style.color = "white";
     tabCourseManagement.style.borderRight = "1px solid black";
+
+    tabFeeManagement.style.backgroundColor = "#07C6A3";
+    tabFeeManagement.style.color = "white";
+    tabFeeManagement.style.borderRight = "1px solid black";
+
+    tabInstituteManagement.style.backgroundColor = "#07C6A3";
+    tabInstituteManagement.style.color = "white";
+    tabInstituteManagement.style.borderRight = "1px solid black";
+
+    tabStudyMaterials.style.backgroundColor = "#07C6A3";
+    tabStudyMaterials.style.color = "white";
+    tabStudyMaterials.style.borderRight = "1px solid black";
     }
 
+// ..............................................................................................
+// Course Management
 tabCourseManagement.onclick = function(){
     dashboard.style.display = "none";
     studentManagement.style.display = "none";
+    feeManagement.style.display = "none";
+    instituteManagement.style.display = "none";
+    studyMaterials.style.display = "none";
     courseManagement.style.display = "flex";
+
     tabCourseManagement.style.backgroundColor = "white";
     tabCourseManagement.style.color = "black";
     tabCourseManagement.style.borderRight = "none";
@@ -69,19 +116,145 @@ tabCourseManagement.onclick = function(){
     tabStudentManagement.style.backgroundColor = "#07C6A3";
     tabStudentManagement.style.color = "white";
     tabStudentManagement.style.borderRight = "1px solid black";
+
+    tabFeeManagement.style.backgroundColor = "#07C6A3";
+    tabFeeManagement.style.color = "white";
+    tabFeeManagement.style.borderRight = "1px solid black";
+
+    tabInstituteManagement.style.backgroundColor = "#07C6A3";
+    tabInstituteManagement.style.color = "white";
+    tabInstituteManagement.style.borderRight = "1px solid black";
+
+    tabStudyMaterials.style.backgroundColor = "#07C6A3";
+    tabStudyMaterials.style.color = "white";
+    tabStudyMaterials.style.borderRight = "1px solid black";
     }
 
+// .........................................................................................
+// Fee Management
+tabFeeManagement.onclick = function(){
+    studentManagement.style.display = "none";
+    courseManagement.style.display = "none";
+    dashboard.style.display = "none";
+    instituteManagement.style.display = "none";
+    studyMaterials.style.display = "none";
+    feeManagement.style.display = "flex";
+
+    tabFeeManagement.style.backgroundColor = "white";
+    tabFeeManagement.style.color = "black";
+    tabFeeManagement.style.borderRight = "none";
+    
+    tabStudentManagement.style.backgroundColor = "#07C6A3";
+    tabStudentManagement.style.color = "white";
+    tabStudentManagement.style.borderRight = "1px solid black";
+    
+    tabCourseManagement.style.backgroundColor = "#07C6A3";
+    tabCourseManagement.style.color = "white";
+    tabCourseManagement.style.borderRight = "1px solid black";
+
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "white";
+    tabDashboard.style.borderRight = "1px solid black";
+
+    tabInstituteManagement.style.backgroundColor = "#07C6A3";
+    tabInstituteManagement.style.color = "white";
+    tabInstituteManagement.style.borderRight = "1px solid black";
+
+    tabStudyMaterials.style.backgroundColor = "#07C6A3";
+    tabStudyMaterials.style.color = "white";
+    tabStudyMaterials.style.borderRight = "1px solid black";
+    }
+    
+
+// ............................................................................
+//  Institute Management
+tabInstituteManagement.onclick = function(){
+    studentManagement.style.display = "none";
+    courseManagement.style.display = "none";
+    dashboard.style.display = "none";
+    feeManagement.style.display = "none";
+    studyMaterials.style.display = "none";
+    instituteManagement.style.display = "flex";
+
+    tabInstituteManagement.style.backgroundColor = "white";
+    tabInstituteManagement.style.color = "black";
+    tabInstituteManagement.style.borderRight = "none";
+    
+    tabStudentManagement.style.backgroundColor = "#07C6A3";
+    tabStudentManagement.style.color = "white";
+    tabStudentManagement.style.borderRight = "1px solid black";
+    
+    tabCourseManagement.style.backgroundColor = "#07C6A3";
+    tabCourseManagement.style.color = "white";
+    tabCourseManagement.style.borderRight = "1px solid black";
+
+    tabFeeManagement.style.backgroundColor = "#07C6A3";
+    tabFeeManagement.style.color = "white";
+    tabFeeManagement.style.borderRight = "1px solid black";
+
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "white";
+    tabDashboard.style.borderRight = "1px solid black";
+
+    tabStudyMaterials.style.backgroundColor = "#07C6A3";
+    tabStudyMaterials.style.color = "white";
+    tabStudyMaterials.style.borderRight = "1px solid black";
+    }
+
+
+// ...................................................................................
+// Study materials
+tabStudyMaterials.onclick = function(){
+    studentManagement.style.display = "none";
+    courseManagement.style.display = "none";
+    dashboard.style.display = "none";
+    feeManagement.style.display = "none";
+    instituteManagement.style.display = "none";
+    studyMaterials.style.display = "flex";
+
+    tabStudyMaterials.style.backgroundColor = "white";
+    tabStudyMaterials.style.color = "black";
+    tabStudyMaterials.style.borderRight = "none";
+    
+    tabStudentManagement.style.backgroundColor = "#07C6A3";
+    tabStudentManagement.style.color = "white";
+    tabStudentManagement.style.borderRight = "1px solid black";
+    
+    tabCourseManagement.style.backgroundColor = "#07C6A3";
+    tabCourseManagement.style.color = "white";
+    tabCourseManagement.style.borderRight = "1px solid black";
+
+    tabInstituteManagement.style.backgroundColor = "#07C6A3";
+    tabInstituteManagement.style.color = "white";
+    tabInstituteManagement.style.borderRight = "1px solid black";
+
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "white";
+    tabDashboard.style.borderRight = "1px solid black";
+
+    tabFeeManagement.style.backgroundColor = "#07C6A3";
+    tabFeeManagement.style.color = "white";
+    tabFeeManagement.style.borderRight = "1px solid black";
+    }
+
+// ..............................................................................................
+// Top bar menu - onclick
 menu1.onclick = function(){
     offCanvas.style.display = "none";
     topbar.style.width = "100%";
     studentManagement.style.width = "100%";
     courseManagement.style.width = "100%";
     dashboard.style.width = "100%";
+    feeManagement.style.width = "100%";
+    instituteManagement.style.width = "100%";
+    studyMaterials.style.width = "100%";
     menu2.style.display = "block";
     itec.innerText = "Information Technology Education Centre";
 
 }
 
+// .................................................................................................
+// Off-canvas menu - onclick
 menu2.onclick = function(){
     offCanvas.style.display = "block";
     tabDashboard.style.backgroundColor = "white";
@@ -92,6 +265,9 @@ menu2.onclick = function(){
     topbar.style.right = "0";
     studentManagement.style.width = "75%";
     courseManagement.style.width = "75%";
+    feeManagement.style.width = "75%";
+    instituteManagement.style.width = "75%";
+    studyMaterials.style.width = "75%";
     dashboard.style.width = "75%";
     menu2.style.display = "none";
     itec.innerText = "ITEC";
@@ -99,7 +275,8 @@ menu2.onclick = function(){
     offCanvas.style.top = "0";
 }
 
-
+// ...................................................................................................
+// Showing Add Student Modal
 let addStudent = document.getElementById("addStudent");
 
 addStudent.onclick = function(){
@@ -116,6 +293,8 @@ let tab2 = document.getElementById("tab2");
 let followup = document.getElementById("followup");
 let register = document.getElementById("register");
 
+// ......................................................
+// Follow-up Tab
 tab1.onclick = function(){
     followup.style.display = "block";
     register.style.display = "none"
@@ -125,6 +304,9 @@ tab1.onclick = function(){
     tab2.style.color = "white";
 }
 
+
+// ........................................................
+// Register Tab
 tab2.onclick = function(){
     followup.style.display = "none";
     register.style.display = "block";
@@ -134,6 +316,8 @@ tab2.onclick = function(){
     tab1.style.color = "white";
 }
 
+//.................................................................................
+// Add Student Modal Close Button
 let close = document.getElementById("close");
 let modalContainer = document.getElementById("modalContainer");
 
@@ -141,6 +325,8 @@ close.onclick = function(){
     modalContainer.style.display = "none";
 }
 
+// ...............................................................................
+// Follow-up Cancel Button
 let followupCancel = document.getElementById("followupCancel");
 let registerCancel = document.getElementById("registerCancel");
 
@@ -148,12 +334,14 @@ followupCancel.onclick = function(){
     modalContainer.style.display = "none";
 }
 
+// ................................................................................
+// Register Cancel Button
 registerCancel.onclick = function(){
     modalContainer.style.display = "none";
 }
 
-
-
+// .................................................................................
+// Follow-up Add Button
 document.getElementById("followup").addEventListener('submit', async function(event){
     event.preventDefault();
     let name = document.getElementById("name").value;
@@ -173,6 +361,8 @@ document.getElementById("followup").addEventListener('submit', async function(ev
 });
 
 
+// ......................................................................................
+// Register Add Button
 document.getElementById("register").addEventListener('submit', async function(event){
     event.preventDefault();
     let stuId = document.getElementById("stuId").value;
@@ -209,18 +399,24 @@ document.getElementById("register").addEventListener('submit', async function(ev
     }
 });
 
+// ........................................................
+// Showing Edit Student Modal
 let editStudent = document.getElementById("editStudent");
 
 editStudent.onclick = function(){
 document.getElementById("editContainer").style.display = "block";
 }
 
+// ..........................................................
+// Edit Student Modal Close Button
 let editClose = document.getElementById("editClose");
 editClose.onclick = function(){
     document.getElementById("editContainer").style.display = "none";
     
 }
 
+// .........................................................................
+// Search Button in Edit Student
 let search = document.getElementById("search");
 
 search.onclick = async function(){
@@ -252,6 +448,8 @@ search.onclick = async function(){
    
 }
 
+// .........................................................................................
+// Edit Button in Edit Student Modal
 let studentEdit = document.getElementById("studentEdit");
 studentEdit.onclick = function(){
 seFname.disabled = false;
@@ -263,7 +461,8 @@ seEmail.disabled = false;
 seAddress.disabled = false;
 };
 
-
+// ..........................................................................................
+// Update Student
 document.getElementById("editDynamic").addEventListener('submit', async function(event){
     event.preventDefault();
     let putId = document.getElementById("searchId").value;
@@ -283,6 +482,8 @@ document.getElementById("editDynamic").addEventListener('submit', async function
 
 });
 
+// .......................................................................
+// View all Students in a New Page
 let viewStudent = document.getElementById("viewStudent");
 
 viewStudent.onclick = function(){
@@ -292,37 +493,22 @@ viewStudent.onclick = function(){
     a.click();
 }
 
-let addCourse = document.getElementById("addCourse");
-
-addCourse.onclick = function(){
-    let addCourseModal = document.getElementById("addCourseModal");
-    addCourseModal.style.display = "block";
-}
-
-// let addCourseShortcut = document.getElementById("addCourseShortcut");
-// addCourseShortcut.appendChild(addCourse);
-
-let addCourseClose = document.getElementById("addCourseClose");
-let addCourseCancel = document.getElementById("addCourseCancel");
-let addCourseModal = document.getElementById("addCourseModal");
-
-addCourseClose.onclick = function(){
-    addCourseModal.style.display = "none";
-}
-
-addCourseCancel.onclick = function(){
-    addCourseModal.style.display = "none";
-}
-
+// .......................................................................................................
+// Showing Remove Student Modal
 let removeStudent = document.getElementById("removeStudent");
 let removeStudetModal = document.getElementById("removeStudetModal");
 removeStudent.onclick = function(){
     removeStudetModal.style.display = "block";
 }
 
+// ........................................................................
+// Remove Student Moadl Cloase Button
 document.getElementById("removeClose").onclick = function(){
     removeStudetModal.style.display = "none";
 }
+
+// ..................................................................................
+// Remove Student Modal Search Button
 let removeDynamic = document.getElementById("removeDynamic");
 
 document.getElementById("removeSearch").onclick = async function(){
@@ -348,6 +534,8 @@ document.getElementById("removeSearch").onclick = async function(){
     }
 }
 
+// .....................................................................
+// Remove Student Modal Remove Button
 document.getElementById("removeBtn").onclick = async function(){
     let removeSearchId = document.getElementById("removeSearchId").value;
     await removeSingleStudent(removeSearchId);
@@ -356,6 +544,36 @@ document.getElementById("removeBtn").onclick = async function(){
 
 }
 
+// ........................................................................
+// Showing Add Course Modal
+let addCourse = document.getElementById("addCourse");
+
+addCourse.onclick = function(){
+    let addCourseModal = document.getElementById("addCourseModal");
+    addCourseModal.style.display = "block";
+}
+
+// let addCourseShortcut = document.getElementById("addCourseShortcut");
+// addCourseShortcut.appendChild(addCourse);
+
+let addCourseClose = document.getElementById("addCourseClose");
+let addCourseCancel = document.getElementById("addCourseCancel");
+let addCourseModal = document.getElementById("addCourseModal");
+
+// ...................................................
+// Add Course Modal Close Button
+addCourseClose.onclick = function(){
+    addCourseModal.style.display = "none";
+}
+
+// ..................................................
+// Add Course Modal Cancel button
+addCourseCancel.onclick = function(){
+    addCourseModal.style.display = "none";
+}
+
+// ..................................................................................................
+// Add Course Function
 document.getElementById("addCourseForm").addEventListener('submit', async function(event){
     event.preventDefault();
     let courseList = await getCourses();
@@ -377,11 +595,11 @@ document.getElementById("addCourseForm").addEventListener('submit', async functi
     event.target.reset();
     alert("Successfully added");
     }
-    
-    
-
 });
 
+
+// ......................................................................................
+// Adding Courses to Listbox in Add Student Modal
 const courseList = await getCourses();
 let selectCourse = document.getElementById("selectCourse");
 
@@ -392,17 +610,25 @@ courseList.forEach(e => {
     selectCourse.appendChild(option);
 });
 
+
+// ....................................................................................
+// Showing Edit Course Modal
 let editCourse = document.getElementById("editCourse");
 editCourse.onclick = function(){
     let editCourseModal = document.getElementById("editCourseModal");
     editCourseModal.style.display = "block";
 }
 
+
+// ........................................................................
+// Edit Course Modal Close Button
 document.getElementById("editcourseModalClose").onclick = function(){
     let editCourseModal = document.getElementById("editCourseModal");
     editCourseModal.style.display = "none";
 }
 
+// ..................................................................................
+// Edit Course Modal Search Button
 document.getElementById("courseSearch").onclick = async function(){
     let searchCourseId = document.getElementById("searchCourseId").value;
     const courseList = await getCourses();
@@ -428,10 +654,11 @@ document.getElementById("courseSearch").onclick = async function(){
         courseError.style.marginBottom = "20px";
         courseError.style.fontFamily = "Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
     }
-
-    
 }
 
+
+// ............................................................................
+// Edit Course Modal Edit Button
 document.getElementById("courseEditBtn").onclick = function(){
     editCourseName.disabled = false;
     editDuration.disabled = false;
@@ -440,8 +667,11 @@ document.getElementById("courseEditBtn").onclick = function(){
     editSyllabus.disabled = false;
 }
 
+
+// .......................................................................................................
+// Edit Course Modal Update Function
 document.getElementById("editCourseDynamic").addEventListener('submit', async function(event){
-    await event.preventDefault();
+    event.preventDefault();
     let searchCourseId = document.getElementById("searchCourseId").value;
 
     let editCourseName = document.getElementById("editCourseName").value;
@@ -458,6 +688,9 @@ document.getElementById("editCourseDynamic").addEventListener('submit', async fu
     alert("Successfully updated");
 });
 
+
+// ......................................................................................
+// Showing All Courses in a New Page
 let viewCourse = document.getElementById("viewCourse");
 viewCourse.onclick = function(){
     let a= document.createElement('a');
@@ -466,16 +699,24 @@ viewCourse.onclick = function(){
     a.click();
 }
 
+
+// ...................................................................................
+// Showing Remove Course Modal
 let removeCourse = document.getElementById("removeCourse");
 let removeCourseModal = document.getElementById("removeCourseModal");
 removeCourse.onclick = function(){
     removeCourseModal.style.display = "block";
 }
 
+// ...................................................................................
+// Remove Course Modal close Button
 document.getElementById("removeCourseClose").onclick = function(){
     removeCourseModal.style.display = "none";
 }
 
+
+// ..................................................................................
+// Remove Course Model Search button
 let removeCourseSearch = document.getElementById("removeCourseSearch");
 removeCourseSearch.onclick = async function(){
     let courseSearchId = document.getElementById("courseSearchId").value;
@@ -501,6 +742,8 @@ removeCourseSearch.onclick = async function(){
     } 
 }
 
+// .............................................................................................
+// Remove Course Modal Remove Button
 let deleteCourse = document.getElementById("deleteCourse");
 deleteCourse.onclick = async function(){
     document.getElementById("removeCourseDynamic").style.display = "none";
