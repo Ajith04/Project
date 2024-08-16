@@ -97,3 +97,19 @@ export async function deleteSingleCourse(id) {
 }
 
 
+export async function addPayment(obj){
+  await fetch('http://localhost:3000/payments',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"id":obj.studentId, "date":obj.studentDate, "fee":obj.studentAddiFee})
+  })
+  
+}
+
+export async function getPayment() {
+  const response = await fetch('http://localhost:3000/payments');
+  const data = await response.json();
+  return data;
+}
+
+

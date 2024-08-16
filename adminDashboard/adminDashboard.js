@@ -1,4 +1,4 @@
-import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents} from '../api.js';
+import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents, addPayment, getPayment} from '../api.js';
 
 
 
@@ -388,6 +388,9 @@ document.getElementById("register").addEventListener('submit', async function(ev
 
     let studentObject = {stuid:stuId, stufname:stuFName, stulname:stuLName, stucourse:selectCourse, stubatch:stuBatch, studate:stuDate, stumobile:stuMobile, stuemail:stuEmail, stuaddress:stuAddress, sturegfee:stuRegFee, stuaddifee:stuAddiFee};
 
+    let paymentObject = {studentId:stuId, studentDate:stuDate, studentAddiFee:stuAddiFee};
+    
+    await addPayment(paymentObject);
     await addNewStudent(studentObject);
 
     alert("Successfully added as new student");
@@ -724,7 +727,7 @@ removeCourseSearch.onclick = async function(){
 
     if(await courseList.find(e => e.id === courseSearchId)){
         removeCourseError.innerText = "";
-        let e = courseList.find(e => e.id === courseSearchId);
+        let e = await courseList.find(e => e.id === courseSearchId);
 
     document.getElementById("removeCourseDynamic").style.display = "flex";
     document.getElementById("cId").innerText = e.id;
@@ -750,4 +753,134 @@ deleteCourse.onclick = async function(){
     let courseSearchId = document.getElementById("courseSearchId").value;
     await deleteSingleCourse(courseSearchId);
     alert("Successfully deleted");
+}
+
+let addStudentShortcut = document.getElementById("addStudentShortcut");
+let addCourseShortcut = document.getElementById("addCourseShortcut");
+let addPaymentShortcut = document.getElementById("addPaymentShortcut");
+let addExpenseShortcut = document.getElementById("addExpenseShortcut");
+
+addStudentShortcut.onclick = function(){
+    modalContainer.style.display = "block";
+}
+
+addCourseShortcut.onclick = function(){
+    addCourseModal.style.display = "block";
+}
+
+async function displayLastStudents(){
+    let allStudents = await getStudents();
+    let reversedStudent = allStudents.reverse();
+    let filteredStudents = await reversedStudent.slice(0, 5);
+    
+    let lastStudents = document.getElementById("lastStudents");
+
+    filteredStudents.forEach(e => {
+        let row = document.createElement('tr');
+        row.style.backgroundColor = "#80C574";
+        row.style.color = "black";
+        row.style.borderBottom = "1px solid black";
+        row.style.borderRadius = "5px";
+        
+        
+        
+
+        let idCell = document.createElement('td');
+        idCell.style.padding = "3px";
+        idCell.textContent = e.id;
+        row.appendChild(idCell);
+
+        let nameCell = document.createElement('td');
+        nameCell.style.padding = "3px";
+        nameCell.textContent = e.firstname;
+        row.appendChild(nameCell);
+
+        let courseCell = document.createElement('td');
+        courseCell.style.padding = "3px";
+        courseCell.textContent = e.course;
+        row.appendChild(courseCell);
+
+        let dateCell = document.createElement('td');
+        dateCell.style.padding = "3px";
+        dateCell.textContent = e.date;
+        row.appendChild(dateCell);
+
+        lastStudents.appendChild(row);
+
+
+    })
+}
+displayLastStudents();
+
+async function displayLastCourses(){
+    let allCourses = await getCourses();
+    let reversedCourses = allCourses.reverse();
+    let filteredCourses = await reversedCourses.slice(0, 5);
+    
+    let lastCourses = document.getElementById("lastCourses");
+
+    filteredCourses.forEach(e => {
+        let row = document.createElement('tr');
+        row.style.backgroundColor = "#D99340";
+        row.style.color = "black";
+        row.style.borderBottom = "1px solid black";
+        
+        
+
+        let idCell = document.createElement('td');
+        idCell.style.padding = "3px";
+        idCell.textContent = e.id;
+        row.appendChild(idCell);
+
+        let nameCell = document.createElement('td');
+        nameCell.style.padding = "3px";
+        nameCell.textContent = e.coursename;
+        row.appendChild(nameCell);
+
+        let feeCell = document.createElement('td');
+        feeCell.style.padding = "3px";
+        feeCell.textContent = e.fees;
+        row.appendChild(feeCell);
+
+        let instructorCell = document.createElement('td');
+        instructorCell.style.padding = "3px";
+        instructorCell.textContent = e.instructor;
+        row.appendChild(instructorCell);
+
+        lastCourses.appendChild(row);
+
+
+    })
+}
+
+displayLastCourses();
+
+
+document.getElementById("paymentSearchBtn").onclick = async function(){
+    let paymentSearchInput = document.getElementById("paymentSearchInput").value;
+    const paymentAllStudents = await getStudents();
+
+    if (await paymentAllStudents.find(e => e.id === paymentSearchInput)){
+        let singleStudent = await paymentAllStudents.find(e => e.id === paymentSearchInput)
+        let paymentCourseName = singleStudent.course;
+
+        const allCourses = await getCourses();
+        let singleCourse = await allCourses.find(e => e.coursename === paymentCourseName);
+        let courseFee = singleCourse.fees;
+        
+        
+        const allPayments = await getPayment();
+        
+        let oldPayments = 0;
+        await allPayments.forEach(e => {
+            if(e.id === paymentSearchInput){
+                oldPayments += parseInt(e.fee);
+            }
+        });
+
+        let payableAmount = courseFee - oldPayments;
+        console.log(payableAmount)
+    }
+
+
 }

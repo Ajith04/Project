@@ -45,11 +45,84 @@
 
     <!-- Dashboard Dynamic Body -->
     <div class="dashboard" id="dashboard">
-        <h2>Admin Dashboard</h2>
-        <div class="row">
-            <div class="col" id="addStudentShortcut"></div>
-            <div class="col" id="addCourseShortcut"></div>
+        <h2>Quick Access</h2>
+        <div class="dashRow">
+
+            <div class="dashcol">
+
+                <div class="subRow">
+                    <div class="icon add" id="addStudentShortcut" title="Add a New Student"><img src="../assets/icons/addStudent.png" alt="Add Student" class="ico"></div>
+                </div>
+                <div class="subRow">
+                    <h2>Add Student</h2>
+                </div>
+
+            </div>
+
+            <div class="dashcol">
+
+                <div class="subRow">
+                    <div class="icon edit" id="addCourseShortcut" title="Add a New Course"><img src="../assets/icons/addCourse.png" alt="Add Course" class="ico"></div>
+                </div>
+                <div class="subRow">
+                    <h2>Add Course</h2>
+                </div>
+
+            </div>
+
+            <div class="dashcol">
+
+                <div class="subRow">
+                    <div class="icon view" id="addPaymentShortcut" title="Add a Payment"><img src="../assets/icons/addPayment.png" alt="Add Payment" class="ico"></div>
+                </div>
+                <div class="subRow">
+                    <h2>Add Payment</h2>
+                </div>
+
+            </div>
+
+            <div class="dashcol">
+
+                <div class="subRow">
+                    <div class="icon delete" id="addExpenseShortcut" title="Add an Expense"><img src="../assets/icons/addExpense.png" alt="Add Expense" class="ico"></div>
+                </div>
+                <div class="subRow">
+                    <h2>Add Expense</h2>
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="tableRow">
+            <div class="lastStudent" title="Last Added Students">
+                <p class="pHead">Last added students...</p>
+                <table id="lastStudents">
+                    <tr>
+                        <th>Stu ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Date of Join</th>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="lastCourse" title="Last Added Courses">
+                <p class="pHead">Last added courses...</p>
+                <table id="lastCourses">
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Name</th>
+                        <th>Fee</th>
+                        <th>Instructor</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+
+
     </div>
 
 
@@ -59,13 +132,13 @@
     <div class="container" id="studentManagement">
         <div class="row">
             <div class="col">
-                <div class="icon add" id="addStudent">
+                <div class="icon add" id="addStudent" title="Add a New Student">
                     <img src="../assets/icons/addStudent.png" alt="Add" class="ico">
                 </div>
                 <h2 class="menuTitle">Add New Student</h2>
             </div>
             <div class="col">
-                <div class="icon edit" id="editStudent">
+                <div class="icon edit" id="editStudent" title="Edit a Student">
                     <img src="../assets/icons/editStudent.png" alt="Edit" class="ico">
                 </div>
                 <h2 class="menuTitle">Edit Student Details</h2>
@@ -73,13 +146,13 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="icon view" id="viewStudent">
+                <div class="icon view" id="viewStudent" title="View All Students">
                     <img src="../assets/icons/viewStudent.png" alt="View" class="ico">
                 </div>
                 <h2 class="menuTitle">View All Students</h2>
             </div>
             <div class="col">
-                <div class="icon delete" id="removeStudent">
+                <div class="icon delete" id="removeStudent" title="Remove a Student">
                     <img src="../assets/icons/removeStudent.png" alt="Delete" class="ico">
                 </div>
                 <h2 class="menuTitle">Remove Student</h2>
@@ -286,13 +359,13 @@
     <div class="container" id="courseManagement">
         <div class="row">
             <div class="col">
-                <div class="icon add" id="addCourse">
+                <div class="icon add" id="addCourse" title="Add a New Course">
                     <img src="../assets/icons/addCourse.png" alt="Add" class="ico">
                 </div>
                 <h2 class="menuTitle">Add New Course</h2>
             </div>
             <div class="col">
-                <div class="icon edit" id="editCourse">
+                <div class="icon edit" id="editCourse"  title="Edit a Course">
                     <img src="../assets/icons/editCourse.png" alt="Edit" class="ico">
                 </div>
                 <h2 class="menuTitle">Edit Course Details</h2>
@@ -300,13 +373,13 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="icon view" id="viewCourse">
+                <div class="icon view" id="viewCourse" title="View All Courses">
                     <img src="../assets/icons/viewCourse.png" alt="View" class="ico">
                 </div>
                 <h2 class="menuTitle">View All Courses</h2>
             </div>
             <div class="col">
-                <div class="icon delete" id="removeCourse">
+                <div class="icon delete" id="removeCourse" title="Remove a Course">
                     <img src="../assets/icons/removeCourse.png" alt="Delete" class="ico">
                 </div>
                 <h2 class="menuTitle">Remove Course</h2>
@@ -438,7 +511,30 @@
 
     <!-- Fee Management Dynamic Body -->
     <div class="container" id="feeManagement">
-        <h2>Fee Management</h2>
+        <div class="paymentTopRow">
+            <div class="searchCol">
+            <h2 style="padding: 10px;">Search by Student ID : </h2>
+                <input type="text" placeholder="Enter Student ID here..." id="paymentSearchInput">
+                
+                <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="paymentSearchBtn">
+        </div>
+        <div class="BtnCol"><button class="paymentSearchBtn">Show all due</button></div>
+        </div>
+
+        <div class="singleStudentPayment">
+            <table class="dynamicTable">
+                <tr>
+                    <th>Stu ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Payable amount</th>
+                    <th>Enter amount</th>
+                    <th>            </th>
+                </tr>
+
+            </table>
+            <div class="paymentHistoryLink"><a href="">Payment History</a></div>
+        </div>
       
     </div>
 

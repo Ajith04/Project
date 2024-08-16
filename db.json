@@ -16,9 +16,137 @@
       "email": "sritharanajith04@gmail.com",
       "address": "New road",
       "description": ""
+    },
+    {
+      "id": "098d",
+      "name": "Thanura",
+      "mobile": "Ajith",
+      "course": "HTML",
+      "date": "2024-08-01",
+      "email": "1234@gmail.com",
+      "address": "Jaffna",
+      "description": ""
     }
   ],
-  "students": [],
+  "students": [
+    {
+      "id": "903090979V",
+      "firstname": "Ajith",
+      "lastname": "Sritharan",
+      "course": "Java",
+      "batch": "V",
+      "date": "2024-08-29",
+      "mobile": "0755255050",
+      "email": "sritharanajith04@gmail.com",
+      "address": "New road",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "9512465444V",
+      "firstname": "Thanura",
+      "lastname": "Ajith",
+      "course": "JavaScript",
+      "batch": "IV",
+      "date": "2024-08-29",
+      "mobile": "0764263440",
+      "email": "1234@gmail.com",
+      "address": "New road, Vadduwest, Vaddukoddai",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "87984564",
+      "firstname": "tghrtgb",
+      "lastname": "fghrth",
+      "course": "Angular",
+      "batch": "hyt",
+      "date": "2024-08-28",
+      "mobile": "sareyey",
+      "email": "qwer@gmail.com",
+      "address": "vaddukoddai",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "rgr3g",
+      "firstname": "rthreth",
+      "lastname": "rthr",
+      "course": "JavaScript",
+      "batch": "yjtry",
+      "date": "2024-08-28",
+      "mobile": "rthrth",
+      "email": "12389@gmail.com",
+      "address": "njrj",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "reyhrth",
+      "firstname": "tyjtny",
+      "lastname": "rtgheht",
+      "course": "JavaScript",
+      "batch": "yjtyj",
+      "date": "2024-08-27",
+      "mobile": "yjryj",
+      "email": "148@gmail.com",
+      "address": "yujyrj",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "12345678",
+      "firstname": "Sritharan",
+      "lastname": "Siva",
+      "course": "Angular",
+      "batch": "yrty",
+      "date": "2024-08-27",
+      "mobile": "rtrth",
+      "email": "456@gmail.com",
+      "address": "rtrt",
+      "regfee": "1000.00",
+      "addifee": "0.00"
+    },
+    {
+      "id": "123456",
+      "firstname": "Ajith",
+      "lastname": "dfwerf",
+      "course": "JavaScript",
+      "batch": "ewsrg",
+      "date": "2024-08-27",
+      "mobile": "gergerg",
+      "email": "qwer@gmail.com",
+      "address": "thrth",
+      "regfee": "1000.00",
+      "addifee": "4500.00"
+    },
+    {
+      "id": "123456789",
+      "firstname": "asdf",
+      "lastname": "qwerty",
+      "course": "Java",
+      "batch": "IV",
+      "date": "2024-08-10",
+      "mobile": "99999999",
+      "email": "12@gmail.com",
+      "address": "regerg",
+      "regfee": "1000.00",
+      "addifee": "2500.00"
+    },
+    {
+      "id": "987654321",
+      "firstname": "rgerg",
+      "lastname": "rthret",
+      "course": "Angular",
+      "batch": "ynthn",
+      "date": "2024-08-06",
+      "mobile": "rthryth",
+      "email": "thrgnrgn@gmail.com",
+      "address": "uykukm",
+      "regfee": "1000.00",
+      "addifee": "9000.00"
+    }
+  ],
   "courses": [
     {
       "id": "003",
@@ -51,6 +179,54 @@
       "fees": "8000.00",
       "instructor": "Aaruran",
       "syllabus": "Springboot\nMicroServices"
+    },
+    {
+      "id": "007",
+      "coursename": "Java",
+      "duration": "5 months",
+      "fees": "8000.00",
+      "instructor": "Aaruran",
+      "syllabus": "Springboot\nMicroServices"
+    },
+    {
+      "id": "008",
+      "coursename": "Java",
+      "duration": "5 months",
+      "fees": "8000.00",
+      "instructor": "Aaruran",
+      "syllabus": "Springboot\nMicroServices"
+    }
+  ],
+  "payments": [
+    {
+      "id": "d129",
+      "date": "2024-08-27",
+      "fee": "4500.00"
+    },
+    {
+      "id": "d529",
+      "date": "2024-09-27",
+      "fee": "1500.00"
+    },
+    {
+      "id": "903090979V",
+      "date": "2024-10-27",
+      "fee": "2000.00"
+    },
+    {
+      "id": "903090979V",
+      "date": "2024-10-27",
+      "fee": "2000.00"
+    },
+    {
+      "id": "4dad",
+      "date": "2024-08-10",
+      "fee": "2500.00"
+    },
+    {
+      "id": "987654321",
+      "date": "2024-08-06",
+      "fee": "9000.00"
     }
   ]
 }

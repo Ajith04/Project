@@ -78,7 +78,6 @@
 
 .material-symbols-outlined{
     color: white;
-    
     cursor: pointer;
 }
 
@@ -133,6 +132,8 @@ li:hover{
 
 
 .icon{
+    height: 130px;
+    width: 130px;
     padding: 20px;
     border-radius: 50%;
     display: flex;
@@ -467,6 +468,113 @@ select:hover{
     color: white;
     cursor: pointer;
 }
+
+.dashRow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.dashcol{
+    padding: 20px;
+}
+
+.tableRow{
+    display: flex;
+
+}
+
+.lastStudent, .lastCourse{
+    margin: 30px;
+    padding: 10px;
+    background-color: #007296;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.pHead{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+table{
+    border-collapse: collapse;
+    
+}
+
+.paymentTopRow{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    
+}
+
+.searchCol{
+    display: flex;
+    align-items: center;
+}
+
+.paymentSearch{
+    padding: 5px;
+    margin-left: 10px;
+    
+}
+.paymentSearch:hover{
+    transform: scale(120%);
+}
+
+.paymentSearchBtn{
+    background-color: #C54D4D;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    text-align: right;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+
+}
+
+.paymentSearchBtn:hover{
+    background-color:#d65757;
+}
+
+.BtnCol{
+    display:flex;
+    justify-content: right;
+
+}
+
+.singleStudentPayment{
+    background-color: #00D2C6;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 200px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px black;
+}
+
+.paymentHistoryLink{
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.dynamicTable{
+    margin-top: 20px;
+    
+}
+
+
+
+
+
+
 
 
 
