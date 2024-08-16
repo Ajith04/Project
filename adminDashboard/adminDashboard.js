@@ -812,46 +812,46 @@ async function displayLastStudents(){
 }
 displayLastStudents();
 
-async function displayLastCourses(){
-    let allCourses = await getCourses();
-    let reversedCourses = allCourses.reverse();
-    let filteredCourses = await reversedCourses.slice(0, 5);
+// async function displayLastCourses(){
+//     let allCourses = await getCourses();
+//     let reversedCourses = allCourses.reverse();
+//     let filteredCourses = await reversedCourses.slice(0, 5);
     
-    let lastCourses = document.getElementById("lastCourses");
+//     let lastCourses = document.getElementById("lastCourses");
 
-    filteredCourses.forEach(e => {
-        let row = document.createElement('tr');
-        row.style.backgroundColor = "#D99340";
-        row.style.color = "black";
-        row.style.borderBottom = "1px solid black";
+//     filteredCourses.forEach(e => {
+//         let row = document.createElement('tr');
+//         row.style.backgroundColor = "#D99340";
+//         row.style.color = "black";
+//         row.style.borderBottom = "1px solid black";
         
         
 
-        let idCell = document.createElement('td');
-        idCell.style.padding = "3px";
-        idCell.textContent = e.id;
-        row.appendChild(idCell);
+//         let idCell = document.createElement('td');
+//         idCell.style.padding = "3px";
+//         idCell.textContent = e.id;
+//         row.appendChild(idCell);
 
-        let nameCell = document.createElement('td');
-        nameCell.style.padding = "3px";
-        nameCell.textContent = e.coursename;
-        row.appendChild(nameCell);
+//         let nameCell = document.createElement('td');
+//         nameCell.style.padding = "3px";
+//         nameCell.textContent = e.coursename;
+//         row.appendChild(nameCell);
 
-        let feeCell = document.createElement('td');
-        feeCell.style.padding = "3px";
-        feeCell.textContent = e.fees;
-        row.appendChild(feeCell);
+//         let feeCell = document.createElement('td');
+//         feeCell.style.padding = "3px";
+//         feeCell.textContent = e.fees;
+//         row.appendChild(feeCell);
 
-        let instructorCell = document.createElement('td');
-        instructorCell.style.padding = "3px";
-        instructorCell.textContent = e.instructor;
-        row.appendChild(instructorCell);
+//         let instructorCell = document.createElement('td');
+//         instructorCell.style.padding = "3px";
+//         instructorCell.textContent = e.instructor;
+//         row.appendChild(instructorCell);
 
-        lastCourses.appendChild(row);
+//         lastCourses.appendChild(row);
 
 
-    })
-}
+//     })
+// }
 
 displayLastCourses();
 
@@ -861,6 +861,7 @@ document.getElementById("paymentSearchBtn").onclick = async function(){
     const paymentAllStudents = await getStudents();
 
     if (await paymentAllStudents.find(e => e.id === paymentSearchInput)){
+        err.style.display = "none";
         let singleStudent = await paymentAllStudents.find(e => e.id === paymentSearchInput)
         let paymentCourseName = singleStudent.course;
 
@@ -879,8 +880,95 @@ document.getElementById("paymentSearchBtn").onclick = async function(){
         });
 
         let payableAmount = courseFee - oldPayments;
-        console.log(payableAmount)
+
+
+        let payDiv = document.getElementById("payDiv");
+        payDiv.style.display = "block";
+
+        document.getElementById("idCell").textContent = singleStudent.id;
+        document.getElementById("nameCell").textContent = singleStudent.firstname;
+        document.getElementById("mobileCell").textContent = singleStudent.mobile;
+        document.getElementById("payableCell").textContent = payableAmount;
+
+        
+    }else{
+        payDiv.style.display = "none";
+        let err = document.getElementById("err");
+        err.style.display = "block";
+        err.textContent = "The Student ID is not exists";
     }
+
+
+}
+
+
+
+document.getElementById("payDiv").addEventListener('submit', async function(event){
+    event.preventDefault();
+    let paymentSearchInput = document.getElementById("paymentSearchInput").value;
+    let singlePayment = document.getElementById("singlePayment").value;
+    let paymentDate = document.getElementById("paymentDate").value;
+
+    let paymentObj = {studentId:paymentSearchInput, studentDate:paymentDate, studentAddiFee:singlePayment};
+
+    await addPayment(paymentObj);
+
+    alert("Payment successfully added");
+});
+
+document.getElementById("reminderBtn").onclick = async function(event){
+    event.preventDefault();
+    let paymentSearchInput = document.getElementById("paymentSearchInput").value;
+    const paymentAllStudents = await getStudents();
+    let singleStudent = await paymentAllStudents.find(e => e.id === paymentSearchInput);
+    console.log(singleStudent)
+    
+    
+    let a = document.createElement('a');
+    a.href = `mailto:${singleStudent.email}?subject=Payment Reminder&body=Hi ${singleStudent.firstname}, %0A%0AThis is a kindly reminder, You have a payment due. Please pay the amount asap. %0A%0AThank you.`;
+    a.click();
+}
+
+document.getElementById("paymentHistory").onclick = async function(event){
+    event.preventDefault();
+
+    let allPayments = await getPayment();
+    let paymentSearchInput = document.getElementById("paymentSearchInput").value;
+    let payHistory = document.getElementById("payHistory");
+    let payHistoryDiv = document.getElementById("payHistoryDiv");
+    payHistoryDiv.style.display = "block";
+    let historyErr = document.getElementById("historyErr");
+    historyErr.textContent = "none";
+    historyErr.style.display = "none";
+
+    await allPayments.forEach(e => {
+    if(e.id === paymentSearchInput){
+        console.log("hi");
+        let row = document.createElement('tr');
+        row.style.backgroundColor = "#80C574"
+
+        let dateCell = document.createElement('td');
+        dateCell.style.padding = "20px";
+        dateCell.style.textAlign = "center";
+        dateCell.textContent = e.date;
+        row.appendChild(dateCell);
+
+        let feeCell = document.createElement('td');
+        feeCell.style.padding = "20px";
+        feeCell.style.textAlign = "center";
+        feeCell.textContent = e.fee;
+        row.appendChild(feeCell);
+
+        payHistory.appendChild(row);
+
+    }else{
+        console.log("hello");
+        payHistoryDiv.style.display = "none";
+        historyErr.style.display = "none";
+        historyErr.textContent = "No payment history";
+        
+    }
+    });
 
 
 }

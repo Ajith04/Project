@@ -521,20 +521,47 @@
         <div class="BtnCol"><button class="paymentSearchBtn">Show all due</button></div>
         </div>
 
-        <div class="singleStudentPayment">
-            <table class="dynamicTable">
+        <form class="singleStudentPayment" id="payDiv">
+            <table class="dynamicTable" id="paymentForm">
                 <tr>
-                    <th>Stu ID</th>
-                    <th>Name</th>
-                    <th>Mobile</th>
-                    <th>Payable amount</th>
-                    <th>Enter amount</th>
-                    <th>            </th>
+                    <th class="tCell">Stu ID</th>
+                    <th class="tCell">Name</th>
+                    <th class="tCell">Mobile</th>
+                    <th class="tCell payAmount">Due amount</th>
+                    <th class="tCell">Enter amount</th>
+                    <th>Date</th>
+                    
+                </tr>
+                <tr style="text-align: center;">
+                    <td id="idCell" class="tCell"></td>
+                    <td id="nameCell" class="tCell"></td>
+                    <td id="mobileCell" class="tCell"></td>
+                    <td id="payableCell" class="tCell"></td>
+                    <td id="amountCell" class="tCell"><input type="text" placeholder="Enter the amount here..." class="tCell" id="singlePayment" required></td>
+                    <td class="dateCell tCell" id="paymentDate"><input type="date" required></td>
+                    <td><button type="submit" class="addPay tCell"><span class="material-symbols-outlined">
+                        add
+                        </span></button></td>
+                    
                 </tr>
 
             </table>
-            <div class="paymentHistoryLink"><a href="">Payment History</a></div>
+            <div class="paymentHistoryLink" id="reminderBtn"><a href="">Send a Reminder</a></div>
+            <div class="paymentHistoryLink" id="paymentHistory"><a href="">View Payment History</a></div>
+        </form>
+
+        <div class="err" id="err"></div>
+        <div class="paymentHistory" id="payHistoryDiv">
+            <table id="payHistory">
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+
+            </table>
         </div>
+
+        <div class="err" id="historyErr"></div>
       
     </div>
 
