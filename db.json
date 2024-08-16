@@ -3,7 +3,8 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "admin"
+      "password": "admin",
+      "regfee": "1500.00"
     }
   ],
   "followup": [
@@ -43,108 +44,32 @@
       "addifee": "0.00"
     },
     {
-      "id": "9512465444V",
-      "firstname": "Thanura",
-      "lastname": "Ajith",
+      "id": "trhreth",
+      "firstname": "rthrth",
+      "lastname": "rthrth",
       "course": "JavaScript",
-      "batch": "IV",
-      "date": "2024-08-29",
-      "mobile": "0764263440",
-      "email": "1234@gmail.com",
-      "address": "New road, Vadduwest, Vaddukoddai",
-      "regfee": "1000.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "87984564",
-      "firstname": "tghrtgb",
-      "lastname": "fghrth",
-      "course": "Angular",
-      "batch": "hyt",
-      "date": "2024-08-28",
-      "mobile": "sareyey",
-      "email": "qwer@gmail.com",
-      "address": "vaddukoddai",
-      "regfee": "1000.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "rgr3g",
-      "firstname": "rthreth",
-      "lastname": "rthr",
-      "course": "JavaScript",
-      "batch": "yjtry",
-      "date": "2024-08-28",
+      "batch": "rthrth",
+      "date": "2024-07-31",
       "mobile": "rthrth",
-      "email": "12389@gmail.com",
-      "address": "njrj",
-      "regfee": "1000.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "reyhrth",
-      "firstname": "tyjtny",
-      "lastname": "rtgheht",
-      "course": "JavaScript",
-      "batch": "yjtyj",
-      "date": "2024-08-27",
-      "mobile": "yjryj",
-      "email": "148@gmail.com",
-      "address": "yujyrj",
-      "regfee": "1000.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "12345678",
-      "firstname": "Sritharan",
-      "lastname": "Siva",
-      "course": "Angular",
-      "batch": "yrty",
-      "date": "2024-08-27",
-      "mobile": "rtrth",
-      "email": "456@gmail.com",
-      "address": "rtrt",
-      "regfee": "1000.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "123456",
-      "firstname": "Ajith",
-      "lastname": "dfwerf",
-      "course": "JavaScript",
-      "batch": "ewsrg",
-      "date": "2024-08-27",
-      "mobile": "gergerg",
       "email": "qwer@gmail.com",
-      "address": "thrth",
-      "regfee": "1000.00",
-      "addifee": "4500.00"
+      "address": "trhrth",
+      "regfee": "1500.00",
+      "addifee": "0.00"
     },
     {
-      "id": "123456789",
-      "firstname": "asdf",
-      "lastname": "qwerty",
-      "course": "Java",
-      "batch": "IV",
-      "date": "2024-08-10",
-      "mobile": "99999999",
-      "email": "12@gmail.com",
-      "address": "regerg",
-      "regfee": "1000.00",
-      "addifee": "2500.00"
-    },
-    {
-      "id": "987654321",
-      "firstname": "rgerg",
-      "lastname": "rthret",
-      "course": "Angular",
-      "batch": "ynthn",
-      "date": "2024-08-06",
-      "mobile": "rthryth",
-      "email": "thrgnrgn@gmail.com",
-      "address": "uykukm",
-      "regfee": "1000.00",
-      "addifee": "9000.00"
+      "id": "erfwerfg",
+      "firstname": "ergerg",
+      "lastname": "erger",
+      "course": "JavaScript",
+      "batch": "V",
+      "date": "2024-07-30",
+      "mobile": "regerg",
+      "email": "1@gmail.com",
+      "address": "rgegeg",
+      "regfee": {
+        "text": "1500.00"
+      },
+      "addifee": "0.00"
     }
   ],
   "courses": [
@@ -211,7 +136,7 @@
     {
       "id": "903090979V",
       "date": "2024-10-27",
-      "fee": "2000.00"
+      "fee": "5000.00"
     },
     {
       "id": "903090979V",
@@ -227,6 +152,131 @@
       "id": "987654321",
       "date": "2024-08-06",
       "fee": "9000.00"
+    },
+    {
+      "id": "rfefb",
+      "date": "2024-08-06",
+      "fee": "0.00"
+    },
+    {
+      "id": "rhhb",
+      "date": "2024-07-31",
+      "fee": "0.00"
+    },
+    {
+      "id": "grgg",
+      "date": "2024-07-30",
+      "fee": "0.00"
+    },
+    {
+      "id": "ergeb",
+      "date": "2024-07-30",
+      "fee": "0.00"
+    },
+    {
+      "id": "fvfv",
+      "date": "2024-07-30",
+      "fee": "0.00"
+    },
+    {
+      "id": "sdrfedf",
+      "date": "2024-07-31",
+      "fee": "0.00"
+    },
+    {
+      "id": "ewrfgwe",
+      "date": "2024-08-07",
+      "fee": "0.00"
+    },
+    {
+      "id": "efwef",
+      "date": "2024-07-31",
+      "fee": "0.00"
+    },
+    {
+      "id": "ergerg",
+      "date": "2024-07-31",
+      "fee": "0.00"
+    },
+    {
+      "id": "rferg",
+      "date": "2024-08-01",
+      "fee": "0.00"
+    },
+    {
+      "id": "trhreth",
+      "date": "2024-07-31",
+      "fee": "0.00"
+    },
+    {
+      "id": "erfwerfg",
+      "date": "2024-07-30",
+      "fee": "0.00"
+    }
+  ],
+  "modules": [
+    {
+      "id": "dd65",
+      "title": "qqqq",
+      "course": "JavaScript",
+      "batch": "qqq",
+      "date": "2024-07-31",
+      "file": "C:\\fakepath\\addCourse.png",
+      "description": "dswdf"
+    },
+    {
+      "id": "d45e",
+      "title": "fgedfgbv",
+      "course": "JavaScript",
+      "batch": "gbrgb",
+      "date": "2024-07-30",
+      "file": "C:\\fakepath\\logo.png",
+      "description": "yjtyhjtyh"
+    }
+  ],
+  "expense": [
+    {
+      "id": "22a1",
+      "title": "Mouse",
+      "course": "2024-08-15",
+      "batch": "650.00",
+      "date": "C:\\fakepath\\logo.png",
+      "description": ""
+    }
+  ],
+  "registrationfee": [
+    {
+      "id": "1",
+      "regfee": "1500.00"
+    }
+  ],
+  "batch": [
+    {
+      "batchname": "V"
+    },
+    {
+      "id": "dc11",
+      "batchname": "V"
+    },
+    {
+      "id": "adcc",
+      "batchname": "Vi"
+    },
+    {
+      "id": "7bc5",
+      "batchname": "h"
+    },
+    {
+      "id": "3636",
+      "batchname": "Vfdvefr"
+    },
+    {
+      "id": "5242",
+      "batchname": "Vdw"
+    },
+    {
+      "id": "58d0",
+      "batchname": "sff"
     }
   ]
 }

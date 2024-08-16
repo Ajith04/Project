@@ -16,6 +16,17 @@ The admin's default username is "admin" and password is "admin". The admin can c
 
 *****************************************************************************************************************
 
+Used technologies
+1. HTML
+2. CSS
+3. JavaScript
+4. Google Icons
+
+Pure HTML, CSS and JavaScript
+100% Organic code
+
+*****************************************************************************************************************
+
 
 Total Scope, I have planned to be covered
 

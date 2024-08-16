@@ -1,4 +1,4 @@
-import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents, addPayment, getPayment} from '../api.js';
+import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents, addPayment, getPayment, addModule, getAllModules, addExpense, changeRegFee, getRegFee, addBatch, getBatch} from '../api.js';
 
 
 
@@ -360,9 +360,27 @@ document.getElementById("followup").addEventListener('submit', async function(ev
     
 });
 
+let allBatches = await getBatch();
+allBatches.forEach(e => {
+    let option = document.createElement('option');
+    option.value = e.batchname;
+    option.text = e.batchname;
+    stuBatch.appendChild(option);
+})
 
+// stuBatch
 // ......................................................................................
 // Register Add Button
+
+let RegFee = await getRegFee();
+let sRegFee = await RegFee.find(e => e.id === "1");
+let finalRegFee = sRegFee.regfee;
+
+let stuRegFee = document.getElementById("stuRegFee");
+stuRegFee.value = finalRegFee;
+
+
+
 document.getElementById("register").addEventListener('submit', async function(event){
     event.preventDefault();
     let stuId = document.getElementById("stuId").value;
@@ -382,11 +400,10 @@ document.getElementById("register").addEventListener('submit', async function(ev
     let stuDate = document.getElementById("stuDate").value;
     let stuMobile = document.getElementById("stuMobile").value;
     let stuEmail = document.getElementById("stuEmail").value;
-    let stuAddress = document.getElementById("stuAddress").value;
-    let stuRegFee = document.getElementById("stuRegFee").value;
+    let stuAddress = document.getElementById("stuAddress").value;  
     let stuAddiFee = document.getElementById("stuAddiFee").value;
 
-    let studentObject = {stuid:stuId, stufname:stuFName, stulname:stuLName, stucourse:selectCourse, stubatch:stuBatch, studate:stuDate, stumobile:stuMobile, stuemail:stuEmail, stuaddress:stuAddress, sturegfee:stuRegFee, stuaddifee:stuAddiFee};
+    let studentObject = {stuid:stuId, stufname:stuFName, stulname:stuLName, stucourse:selectCourse, stubatch:stuBatch, studate:stuDate, stumobile:stuMobile, stuemail:stuEmail, stuaddress:stuAddress, sturegfee:finalRegFee, stuaddifee:stuAddiFee};
 
     let paymentObject = {studentId:stuId, studentDate:stuDate, studentAddiFee:stuAddiFee};
     
@@ -812,46 +829,48 @@ async function displayLastStudents(){
 }
 displayLastStudents();
 
-// async function displayLastCourses(){
-//     let allCourses = await getCourses();
-//     let reversedCourses = allCourses.reverse();
-//     let filteredCourses = await reversedCourses.slice(0, 5);
+
+
+async function displayLastCourses(){
+    let allCourses = await getCourses();
+    let reversedCourses = allCourses.reverse();
+    let filteredCourses = await reversedCourses.slice(0, 5);
     
-//     let lastCourses = document.getElementById("lastCourses");
+    let lastCourses = document.getElementById("lastCourses");
 
-//     filteredCourses.forEach(e => {
-//         let row = document.createElement('tr');
-//         row.style.backgroundColor = "#D99340";
-//         row.style.color = "black";
-//         row.style.borderBottom = "1px solid black";
+    filteredCourses.forEach(e => {
+        let row = document.createElement('tr');
+        row.style.backgroundColor = "#D99340";
+        row.style.color = "black";
+        row.style.borderBottom = "1px solid black";
         
         
 
-//         let idCell = document.createElement('td');
-//         idCell.style.padding = "3px";
-//         idCell.textContent = e.id;
-//         row.appendChild(idCell);
+        let idCell = document.createElement('td');
+        idCell.style.padding = "3px";
+        idCell.textContent = e.id;
+        row.appendChild(idCell);
 
-//         let nameCell = document.createElement('td');
-//         nameCell.style.padding = "3px";
-//         nameCell.textContent = e.coursename;
-//         row.appendChild(nameCell);
+        let nameCell = document.createElement('td');
+        nameCell.style.padding = "3px";
+        nameCell.textContent = e.coursename;
+        row.appendChild(nameCell);
 
-//         let feeCell = document.createElement('td');
-//         feeCell.style.padding = "3px";
-//         feeCell.textContent = e.fees;
-//         row.appendChild(feeCell);
+        let feeCell = document.createElement('td');
+        feeCell.style.padding = "3px";
+        feeCell.textContent = e.fees;
+        row.appendChild(feeCell);
 
-//         let instructorCell = document.createElement('td');
-//         instructorCell.style.padding = "3px";
-//         instructorCell.textContent = e.instructor;
-//         row.appendChild(instructorCell);
+        let instructorCell = document.createElement('td');
+        instructorCell.style.padding = "3px";
+        instructorCell.textContent = e.instructor;
+        row.appendChild(instructorCell);
 
-//         lastCourses.appendChild(row);
+        lastCourses.appendChild(row);
 
 
-//     })
-// }
+    })
+}
 
 displayLastCourses();
 
@@ -862,6 +881,7 @@ document.getElementById("paymentSearchBtn").onclick = async function(){
 
     if (await paymentAllStudents.find(e => e.id === paymentSearchInput)){
         err.style.display = "none";
+        historyErr.style.display = "none";
         let singleStudent = await paymentAllStudents.find(e => e.id === paymentSearchInput)
         let paymentCourseName = singleStudent.course;
 
@@ -892,6 +912,8 @@ document.getElementById("paymentSearchBtn").onclick = async function(){
 
         
     }else{
+        historyErr.style.display = "none";
+        payHistoryDiv.style.display = "none";
         payDiv.style.display = "none";
         let err = document.getElementById("err");
         err.style.display = "block";
@@ -929,46 +951,280 @@ document.getElementById("reminderBtn").onclick = async function(event){
     a.click();
 }
 
-document.getElementById("paymentHistory").onclick = async function(event){
+let paymentHistory = document.getElementById("paymentHistory");
+paymentHistory.onclick = async function(event){
     event.preventDefault();
-
-    let allPayments = await getPayment();
+    let singleStudent = [];
     let paymentSearchInput = document.getElementById("paymentSearchInput").value;
-    let payHistory = document.getElementById("payHistory");
-    let payHistoryDiv = document.getElementById("payHistoryDiv");
-    payHistoryDiv.style.display = "block";
-    let historyErr = document.getElementById("historyErr");
-    historyErr.textContent = "none";
-    historyErr.style.display = "none";
+    let allPayments = await getPayment();
 
+    if(await allPayments.find(e => e.id === paymentSearchInput)){
+        let payHistoryDiv = document.getElementById("payHistoryDiv");
+        payHistoryDiv.style.display = "block";
+        
+        let historyErr = document.getElementById("historyErr");
+        historyErr.style.display = "none";
     await allPayments.forEach(e => {
-    if(e.id === paymentSearchInput){
-        console.log("hi");
+        if(e.id === paymentSearchInput){
+            singleStudent.push(e);           
+        }
+    });
+    payHistory.innerHTML = "";
+    singleStudent.forEach(e => {
+
         let row = document.createElement('tr');
-        row.style.backgroundColor = "#80C574"
+        row.style.backgroundColor = "#80C574";
 
         let dateCell = document.createElement('td');
         dateCell.style.padding = "20px";
         dateCell.style.textAlign = "center";
+        dateCell.style.color = "White";
         dateCell.textContent = e.date;
         row.appendChild(dateCell);
 
         let feeCell = document.createElement('td');
         feeCell.style.padding = "20px";
         feeCell.style.textAlign = "center";
+        feeCell.style.color = "White";
         feeCell.textContent = e.fee;
         row.appendChild(feeCell);
-
+        
         payHistory.appendChild(row);
 
-    }else{
-        console.log("hello");
-        payHistoryDiv.style.display = "none";
-        historyErr.style.display = "none";
-        historyErr.textContent = "No payment history";
-        
-    }
     });
+    
+
+}else{
+    payHistoryDiv.style.display = "none";
+    historyErr.style.display = "block";
+    historyErr.textContent = "No history";
+    historyErr.style.color = "white";
+
+}
+}
+
+addPaymentShortcut.onclick = function(){
+    feeManagement.style.display = "flex";
+    dashboard.style.display = "none";
+    tabDashboard.style.backgroundColor = "#07C6A3";
+    tabDashboard.style.color = "White";
+    tabDashboard.style.borderRight = "1px solid black";
+    tabFeeManagement.style.backgroundColor = "White";
+    tabFeeManagement.style.color = "black";
+    tabFeeManagement.style.borderRight = "none";
+    
+
+}
+
+let addmoduleBtn = document.getElementById("addmoduleBtn");
+addmoduleBtn.onclick = function(){
+let addModuleModal = document.getElementById("addModuleModal");
+addModuleModal.style.display = "block";
+}
+
+document.getElementById("moduleModalClose").onclick = function(){
+    addModuleModal.style.display = "none";
+}
+
+document.getElementById("moduleModalCancel").onclick = function(){
+    addModuleModal.style.display = "none";
+}
+
+async function ModuleCourses(){
+let courseList = document.getElementById("courseList");
+let allCourses = await getCourses();
+
+await allCourses.forEach(e => {
+    let courseOption = document.createElement('option');
+    courseOption.value = e.coursename;
+    courseOption.text = e.coursename;
+    courseList.appendChild(courseOption);
+})
+
 
 
 }
+
+ModuleCourses();
+
+
+
+
+document.getElementById("module").addEventListener('submit', async function(event){
+    event.preventDefault();
+
+let moduleTitle = document.getElementById("moduleTitle").value;
+let courseList = document.getElementById("courseList").value;
+let moduleBatch = document.getElementById("moduleBatch").value;
+let moduleDate = document.getElementById("moduleDate").value;
+let moduleFile = document.getElementById("moduleFile").value;
+let ModuleDescription = document.getElementById("ModuleDescription").value;
+
+let moduleObj = {mModuleTitle:moduleTitle, mCourseList:courseList, mModulebatch:moduleBatch, mModuleDate:moduleDate, mModuleFile:moduleFile, mModuleDescription:ModuleDescription};
+
+await addModule(moduleObj);
+
+alert("Successfully added");
+
+})
+
+
+
+async function getModules(){
+
+    let allModules = await getAllModules();
+
+    let reversedModules = await allModules.reverse();
+    
+    let moduleTBody = document.getElementById("moduleTBody");
+
+    // ...........................................................................
+// Module History Table
+// Creating table rows and table data using data from db.json/modules
+reversedModules.forEach(e => {
+        let row = document.createElement('tr');
+        row.style.backgroundColor = "#80C574"
+
+        let titleCell = document.createElement('td');
+        titleCell.style.padding = "20px";
+        titleCell.style.textAlign = "center";
+        titleCell.style.border = "1px solid white";
+        titleCell.textContent = e.title;
+        row.appendChild(titleCell);
+
+
+        let courseCell = document.createElement('td');
+        courseCell.style.padding = "20px";
+        courseCell.style.textAlign = "center";
+        courseCell.style.border = "1px solid white";
+        courseCell.textContent = e.course;
+        row.appendChild(courseCell);
+
+        let batchCell = document.createElement('td');
+        batchCell.style.padding = "20px";
+        batchCell.style.textAlign = "center";
+        batchCell.style.border = "1px solid white";
+        batchCell.textContent = e.batch;
+        row.appendChild(batchCell);
+
+        let dateCell = document.createElement('td');
+        dateCell.style.padding = "20px";
+        dateCell.style.textAlign = "center";
+        dateCell.style.border = "1px solid white";
+        dateCell.textContent = e.date;
+        row.appendChild(dateCell);
+
+        let fileCell = document.createElement('td');
+        fileCell.style.padding = "20px";
+        fileCell.style.textAlign = "center";
+        fileCell.style.border = "1px solid white";
+        fileCell.textContent = e.file;
+        row.appendChild(fileCell);
+
+        let descriptionCell = document.createElement('td');
+        descriptionCell.style.padding = "20px";
+        descriptionCell.style.textAlign = "center";
+        descriptionCell.style.border = "1px solid white";
+        descriptionCell.textContent = e.description;
+        row.appendChild(descriptionCell);
+      
+
+        moduleTBody.appendChild(row);
+
+    
+});
+}
+
+getModules();
+
+let addExpenseModal = document.getElementById("addExpenseModal");
+document.getElementById("addExpenseBtn").onclick = function(){
+    addExpenseModal.style.display = "block";
+}
+
+document.getElementById("expenseModalClose").onclick = function(){
+    addExpenseModal.style.display = "none";
+}
+
+document.getElementById("addExpenseShortcut").onclick = function(){
+    addExpenseModal.style.display = "block";
+}
+
+document.getElementById("expenseCancelBtn").onclick = function(){
+    addExpenseModal.style.display = "none";
+}
+
+
+
+document.getElementById("expenseForm").addEventListener('submit', async function(event){
+event.preventDefault();
+let eTitle = document.getElementById("eTitle").value;
+let eDate = document.getElementById("eDate").value;
+let ePrice = document.getElementById("ePrice").value;
+let eReceipt = document.getElementById("eReceipt").value;
+let eDescription = document.getElementById("eDescription").value;
+
+let expenseObj = {title:eTitle, date:eDate, price:ePrice, receipt:eReceipt, description:eDescription};
+
+await addExpense(expenseObj);
+event.target.reset();
+
+alert("Successfully added");
+
+})
+
+let changeRegModal = document.getElementById("changeRegModal");
+document.getElementById("changeRegFee").onclick = function(){
+    changeRegModal.style.display = "block";
+}
+
+document.getElementById("regClose").onclick = function(){
+    changeRegModal.style.display = "none";
+}
+
+document.getElementById("regForm").addEventListener('submit', async function(event){
+event.preventDefault();
+let newReg = document.getElementById("newReg").value;
+await changeRegFee(newReg);
+
+event.target.reset();
+
+alert("successfully changed");
+})
+
+let addBatchModal = document.getElementById("addBatchModal");
+document.getElementById("addBatch").onclick = function(){
+    addBatchModal.style.display = "block";
+}
+
+document.getElementById("batchModalCloseBtn").onclick = function(){
+    addBatchModal.style.display = "none";
+}
+
+document.getElementById("addBatchForm").addEventListener('submit', async function(event){
+event.preventDefault();
+
+let batches = await getBatch();
+let batchName = document.getElementById("batchName").value;
+if(await batches.find(e => e.batchname === batchName)){
+    let exists = document.getElementById("exists");
+    exists.textContent = "Already exists";
+    exists.style.color = "white";
+    exists.style.textAlign = "center";
+    exists.style.marginBottom = "10px";
+}else{
+exists.textContent = "";
+let batchObj = {batch:batchName};
+await addBatch(batchObj);
+alert("Successfully added");
+
+}
+});
+
+document.getElementById("followupBtn").onclick = function(){
+    let a = document.createElement('a');
+    a.href = "../followupList/followup.html";
+    a.target= '_blank';
+    a.click();
+}
+

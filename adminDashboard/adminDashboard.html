@@ -228,7 +228,7 @@
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="email">Batch : </label></div>
-                    <div class="modalCol"><input type="text" id="stuBatch"></div>
+                    <div class="modalCol"><select id="stuBatch"></select></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="address">Date : </label></div>
@@ -248,7 +248,7 @@
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Reg Fee : </label></div>
-                    <div class="modalCol"><input type="text" value="1000.00" id="stuRegFee" required></div>
+                    <div class="modalCol"><input type="text" id="stuRegFee" required></div>
                 </div>
                 <div class="row">
                     <div class="modalCol"><label for="description">Additional Fee : </label></div>
@@ -552,12 +552,14 @@
 
         <div class="err" id="err"></div>
         <div class="paymentHistory" id="payHistoryDiv">
-            <table id="payHistory">
+            <table>
                 <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
+                    <th class="historyTH">Date</th>
+                    <th class="historyTH">Amount</th>
                 </tr>
+                <tbody id="payHistory">
 
+                </tbody>
             </table>
         </div>
 
@@ -565,23 +567,192 @@
       
     </div>
 
-
+    
 
     <!-- Institute Management Dynamic Body -->
     <div class="container" id="instituteManagement">
-        <h2>Institute Management</h2>
+        <div>
+            <button class="imBtn regFee" id="changeRegFee" type="button">Change Reg fee</button>
+            <button class="imBtn newBatch" type="button" id="addBatch">Add new Batch</button>
+            <button class="imBtn addExpense" id="addExpenseBtn" type="button">Add Expense</button>
+        </div>
+        <div><button class="imBtn followupList" id="followupBtn">View follow-up list</button></div>
+        <div class="bottomRow">
+            <h2>Course engagement</h2>
+            <h3 class="wiseHead">View students by</h3>
+            <label for="">Course:</label>
+            <select name="" id=""></select>
+            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="">
+            <label for="">Batch:</label>
+            <select name="" id=""></select>
+            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="">
+            
+        </div>
+
+        <div>
+            <table></table>
+        </div>
         
+        
+    </div>
+
+
+
+    <!-- Reg Fee Change Modal -->
+    <div class="modalContainer" id="changeRegModal">
+        <div class="editStudentModal regBg">
+            <div class="editTopRow">
+                <span class="close"><p class="closeButton" id="regClose">&times;</p></span>
+                <h2 class="editHeading">Change Registration Fee</h2>
+                
+            </div>
+
+            <!-- ........................................................................................ -->
+            <!--Reg Fee Change Modal body -->
+            <form class="followup" id="regForm">
+                <div class="row">
+                    <div class="modalCol"><label for="name">New amount : </label></div>
+                    <div class="modalCol"><input type="text" id="newReg" placeholder="Enter the new reg fee..." required></div>
+                </div>
+                <div class="btnRow editBtnRow">
+                    <button class="primaryBtn">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Add New Batch Modal -->
+    <div class="modalContainer" id="addBatchModal">
+        <div class="editStudentModal addBatch">
+            <div class="editTopRow">
+                <span class="close"><p class="closeButton" id="batchModalCloseBtn">&times;</p></span>
+                <h2 class="editHeading">Add New Batch</h2>
+                
+            </div>
+
+            <!-- ........................................................................................ -->
+            <!--Add New Batch Modal body -->
+            <form class="followup" id="addBatchForm">
+                <div class="row">
+                    <div class="modalCol"><label for="name">Enter Batch Name : </label></div>
+                    <div class="modalCol"><input type="text" id="batchName" placeholder="Enter batch name..." required></div>
+                </div>
+                <div class="btnRow editBtnRow">
+                    <button class="primaryBtn">Add</button>
+                </div>
+            </form>
+            <div id="exists"></div>
+        </div>
+    </div>
+
+
+    <!-- Add Expense Modal Container-->
+    <div class="modalContainer" id="addExpenseModal">
+        <div class="addStudentModal addExpenseBody">
+            <div class="editTopRow">
+                <span class="close"><p class="closeButton" id="expenseModalClose">&times;</p></span>
+                <h2 class="editHeading">Add New Expense</h2>
+            </div>
+            <form id="expenseForm">
+            <div class="row firstRow">
+                <div class="modalCol"><label for="">Title : </label></div>
+                <div class="modalCol"><input type="text" id="eTitle" required></div>
+            </div>
+            <div class="row">
+                <div class="modalCol"><label for="">Date : </label></div>
+                <div class="modalCol"><input type="date" id="eDate" required></div>
+            </div>
+            <div class="row">
+                <div class="modalCol"><label for="">Price : </label></div>
+                <div class="modalCol"><input type="text" id="ePrice" required></div>
+            </div>
+            <div class="row">
+                <div class="modalCol"><label for="">Receipt : </label></div>
+                <div class="modalCol"><input type="file" id="eReceipt" required></div>
+            </div>
+            <div class="row">
+                <div class="modalCol"><label for="">Description : </label></div>
+                <div class="modalCol"><textarea name="" id="eDescription"></textarea></div>
+            </div>
+            
+            <div class="btnRow">
+                <button class="secondaryBtn" id="expenseCancelBtn" type="button">Cancel</button>
+                <button type="submit" class="primaryBtn">Add</button>
+            </div>
+        </form>
+        </div>
     </div>
 
 
 
     <!-- Study Materials Dynamic Body -->
     <div class="container" id="studyMaterials">
-        <h2>Study Materials</h2>
-        
+            <span class="material-symbols-outlined addModuleBtn" id="addmoduleBtn" title="Add a new module">add</span>
+            <h2>Upload Module</h2>
+
+            <div class="tableContainer">
+                <table class="moduleTable">
+                    <caption class="moduleCaption">Uploaded History</caption>
+                    <thead>
+                    <tr class="tableHeading">
+                        <th class="moduleHead">Title</th>
+                        <th class="moduleHead">Course</th>
+                        <th class="moduleHead">Batch</th>
+                        <th class="moduleHead">Published Date</th>
+                        <th class="moduleHead">Module</th>
+                        <th class="moduleHead">Description</th>
+                    </tr>
+                </thead>
+                <tbody id="moduleTBody">
+            
+                </tbody>
+                </table>
+            </div>
     </div>
 
     
+<!-- Add New Course Modal Container-->
+<div class="modalContainer" id="addModuleModal">
+    <div class="addStudentModal moduleBg">
+        <div class="editTopRow">
+            <span class="close"><p class="closeButton" id="moduleModalClose">&times;</p></span>
+            <h2 class="editHeading">Add New Module</h2>
+        </div>
+        <form id="module">
+        <div class="row firstRow">
+            <div class="modalCol"><label for="courseid">Title : </label></div>
+            <div class="modalCol"><input type="text" id="moduleTitle" required></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="coursename">Course : </label></div>
+            <div class="modalCol"><select name="" id="courseList"></select></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="duration">Batch : </label></div>
+            <div class="modalCol"><input type="text" id="moduleBatch" required></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="fee">Date : </label></div>
+            <div class="modalCol"><input type="date" id="moduleDate" required></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="instructor">Upload : </label></div>
+            <div class="modalCol"><input type="file" id="moduleFile" required></div>
+        </div>
+        <div class="row">
+            <div class="modalCol"><label for="syllabus">Description : </label></div>
+            <div class="modalCol"><textarea name="" id="ModuleDescription"></textarea></div>
+        </div>
+        <div class="btnRow">
+            <button class="secondaryBtn" id="moduleModalCancel" type="button">Cancel</button>
+            <button type="submit" class="primaryBtn">Add</button>
+        </div>
+    </form>
+    </div>
+</div>
+
     <script src="./adminDashboard.js" type="module"></script>
         
 </body>

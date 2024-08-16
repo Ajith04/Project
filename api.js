@@ -113,3 +113,67 @@ export async function getPayment() {
 }
 
 
+export async function addModule(obj){
+  await fetch('http://localhost:3000/modules',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"title":obj.mModuleTitle, "course":obj.mCourseList, "batch":obj.mModulebatch, "date":obj.mModuleDate, "file":obj.mModuleFile, "description":obj.mModuleDescription})
+  })
+  
+}
+
+export async function getAllModules() {
+  const response = await fetch('http://localhost:3000/modules');
+  const data = await response.json();
+  return data;
+}
+
+
+export async function addExpense(obj){
+  await fetch('http://localhost:3000/expense',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"title":obj.title, "course":obj.date, "batch":obj.price, "date":obj.receipt, "file":obj.mModuleFile, "description":obj.description})
+  })
+  
+}
+
+
+export async function changeRegFee(newReg){
+  await fetch('http://localhost:3000/registrationfee/1', {
+  method: 'PATCH',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({ regfee: newReg })
+})      
+}
+
+export async function getRegFee() {
+  const response = await fetch('http://localhost:3000/registrationfee');
+  const data = await response.json();
+  return data;
+}
+
+
+export async function addBatch(obj){
+  await fetch('http://localhost:3000/batch',{
+    method:'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"batchname":obj.batch})
+  })
+  
+}
+
+export async function getBatch() {
+  const response = await fetch('http://localhost:3000/batch');
+  const data = await response.json();
+  return data;
+}
+
+
+export async function getFollowup() {
+  const response = await fetch('http://localhost:3000/followup');
+  const data = await response.json();
+  return data;
+}
+
+

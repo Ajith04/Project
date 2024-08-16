@@ -563,6 +563,7 @@ table{
     margin-right: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .dynamicTable{
@@ -625,9 +626,103 @@ background-color: #04d827;
     display: flex;
     text-align: center;
     display: none;
+    margin-top: 30px;
+}
+
+.historyTH{
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
+
+.addModuleBtn{
+    background-color: #04b43f;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 1px 1px 5px black;
+    
+}
+
+.moduleBg{
+    background-color: #00D2C6;
+}
+
+.moduleCaption{
+    background-color: #007296;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+
+.addExpenseBody{
+    background-color: #C54D4D;
+}
+
+.imBtn{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: White;
+    font-size: 16px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.regFee{
+    background-color: #00D2C6;
+}
+
+.regFee:hover{
+    background-color: #04ebdf;
+}
+
+.newBatch{
+    background-color:#04b43f;
+}
+
+.newBatch:hover{
+    background-color: #07da4d;
+}
+
+.addExpense{
+    background-color:#C54D4D;
+}
+
+.addExpense:hover{
+    background-color: #e95d5d;
+}
+
+.bottomRow{
+    margin-top: 30px;
+}
+
+.followupList{
+    background-color: rgb(192, 192, 3);
+    margin-top: 10px;
+}
+
+.followupList:hover{
+    background-color: rgb(202, 202, 2);
+    
+}
+
+.wiseHead{
+    margin-top: 20px;
+}
+
+.regBg{
+    background-color: #00D2C6;
+}
+
+.addBatch{
+    background-color: #04b43f;
+}
 
 
 
