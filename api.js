@@ -133,7 +133,7 @@ export async function addExpense(obj){
   await fetch('http://localhost:3000/expense',{
     method:'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({"title":obj.title, "course":obj.date, "batch":obj.price, "date":obj.receipt, "file":obj.mModuleFile, "description":obj.description})
+    body: JSON.stringify({"title":obj.title, "date":obj.date, "price":obj.price, "receipt":obj.receipt, "file":obj.mModuleFile, "description":obj.description})
   })
   
 }
@@ -172,6 +172,12 @@ export async function getBatch() {
 
 export async function getFollowup() {
   const response = await fetch('http://localhost:3000/followup');
+  const data = await response.json();
+  return data;
+}
+
+export async function getExpense() {
+  const response = await fetch('http://localhost:3000/expense');
   const data = await response.json();
   return data;
 }

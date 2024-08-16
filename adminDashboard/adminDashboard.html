@@ -538,7 +538,7 @@
                     <td id="mobileCell" class="tCell"></td>
                     <td id="payableCell" class="tCell"></td>
                     <td id="amountCell" class="tCell"><input type="text" placeholder="Enter the amount here..." class="tCell" id="singlePayment" required></td>
-                    <td class="dateCell tCell" id="paymentDate"><input type="date" required></td>
+                    <td class="dateCell tCell"><input type="date" required id="paymentDate"></td>
                     <td><button type="submit" class="addPay tCell"><span class="material-symbols-outlined">
                         add
                         </span></button></td>
@@ -576,7 +576,10 @@
             <button class="imBtn newBatch" type="button" id="addBatch">Add new Batch</button>
             <button class="imBtn addExpense" id="addExpenseBtn" type="button">Add Expense</button>
         </div>
-        <div><button class="imBtn followupList" id="followupBtn">View follow-up list</button></div>
+        <div>
+            <button class="imBtn followupList" id="followupBtn">View follow-up list</button>
+            <button class="imBtn genReport" id="report">Generate Report</button>
+        </div>
         <div class="bottomRow">
             <h2>Course engagement</h2>
             <h3 class="wiseHead">View students by</h3>
@@ -782,6 +785,33 @@
             <button type="submit" class="primaryBtn">Add</button>
         </div>
     </form>
+    </div>
+</div>
+
+
+<!-- Report Modal -->
+<div class="modalContainer" id="reportModal">
+    <div class="editStudentModal">
+        <div class="editTopRow">
+            <span class="close"><p class="closeButton" id="reportClose">&times;</p></span>
+            <h2 class="editHeading">Report</h2>
+            
+        </div>
+
+        <!-- ........................................................................................ -->
+        <!--Report Modal body -->
+        <div class="followup gen" id="reportTable">
+            <table id="genReportTable" class="">
+                <tr>
+                    <th class="genTHead">Total Reg Fee</th>
+                    <th class="genTHead">Total Course Fee</th>
+                    <th class="genTHead">Total Expense</th>
+                </tr>
+                
+            </table>
+        </div>
+        <div id="message" class="message"></div>
+        
     </div>
 </div>
 

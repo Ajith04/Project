@@ -763,6 +763,33 @@ background-color: #04d827;
     color: #C54D4D;
 }
 
+.genReport{
+    background-color: rgb(210, 105, 30);
+}
+
+.genReport:hover{
+    background-color: rgb(241, 121, 35);
+}
+
+
+
+.gen{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.message{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.genTHead{
+    padding: 10px;
+    color: white;
+    
+}
+
 
 
 

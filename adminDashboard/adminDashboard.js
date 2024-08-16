@@ -1,4 +1,4 @@
-import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents, addPayment, getPayment, addModule, getAllModules, addExpense, changeRegFee, getRegFee, addBatch, getBatch} from '../api.js';
+import {addStudents, updateStudent, removeSingleStudent, addNewCourse, getCourses, addNewStudent, courseUpdate, deleteSingleCourse, getStudents, addPayment, getPayment, addModule, getAllModules, addExpense, changeRegFee, getRegFee, addBatch, getBatch, getExpense} from '../api.js';
 
 
 
@@ -1436,4 +1436,99 @@ if(await batchAllStudents.find(e => e.batch === imBatchList)){
     errM.style.textAlign = "center";
 }
     
+}
+
+document.getElementById("report").onclick = async function(){
+    let reportModal = document.getElementById("reportModal");
+    reportModal.style.display = "block";
+
+    let totalRegFee = 0;
+    let regFeeStudents = await getStudents();
+    await regFeeStudents.forEach(e => {
+        totalRegFee += parseInt(e.regfee);
+    })
+
+    let totalCourseFee = 0;
+    let paymentStudents = await getPayment();
+    await paymentStudents.forEach(e => {
+        totalCourseFee += parseInt(e.fee);
+    })
+
+    let allExpenses = 0;
+    let companyExpenses = await getExpense();
+    await companyExpenses.forEach(e => {
+        allExpenses += parseInt(e.price);
+    })
+    console.log(totalRegFee);
+    console.log(totalCourseFee);
+    console.log(allExpenses);
+
+    let tBody = document.createElement('tbody');
+
+    let reportRow = document.createElement('tr');
+    reportRow.style.padding = "10px";
+    reportRow.style.backgroundColor = "rgb(210, 105, 30)";
+    reportRow.style.color = "white";
+
+    let regFeeCell = document.createElement('td');
+    regFeeCell.textContent = totalRegFee;
+    regFeeCell.style.padding = "10px";
+    regFeeCell.style.textAlign = "center";
+    reportRow.appendChild(regFeeCell);
+
+    let courseFeeCell = document.createElement('td');
+    courseFeeCell.textContent = totalCourseFee;
+    courseFeeCell.style.padding = "10px";
+    courseFeeCell.style.textAlign = "center";
+    reportRow.appendChild(courseFeeCell);
+
+    let expenseCell = document.createElement('td');
+    expenseCell.textContent = allExpenses;
+    expenseCell.style.padding = "10px";
+    expenseCell.style.textAlign = "center";
+    reportRow.appendChild(expenseCell);
+
+    tBody.appendChild(reportRow);
+    
+    let genReportTable = document.getElementById("genReportTable");
+    genReportTable.appendChild(tBody);
+
+    let message = document.getElementById("message");
+    if(totalRegFee+totalCourseFee>allExpenses){
+        message.textContent = `Profit : ${(totalRegFee+totalCourseFee)-allExpenses}`;
+        message.style.padding = "10px";
+        message.style.color = "rgb(0, 100, 0)";
+        message.style.textAlign = "center";
+        
+
+    }else{
+        message.textContent = `Lose : ${allExpenses-(totalRegFee+totalCourseFee)}`;
+        message.style.padding = "10px";
+        message.style.color = "#C54D4D"
+        message.style.textAlign = "center"
+    }
+
+    
+
+    
+
+    // document.getElementById("reportTable").innerHTML = `<table>
+    // <tr>
+    // <th style="padding:5px;">Total Reg Fee</th>
+    // <th style="padding:5px;">Total Course fee</th>
+    // <th style="padding:5px;">Total Expense</th>
+    // </tr>
+    // <tr>
+    // <td style="padding:5px;">${totalRegFee}</td>
+    // <td style="padding:5px;">${totalCourseFee}</td>
+    // <td style="padding:5px;">${allExpenses}</td>
+    // <td></td>
+    // </tr>
+    // </table>`;
+
+
+}
+
+document.getElementById("reportClose").onclick = function(){
+    reportModal.style.display = "none";
 }
