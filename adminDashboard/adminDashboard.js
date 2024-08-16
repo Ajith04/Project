@@ -361,7 +361,8 @@ document.getElementById("followup").addEventListener('submit', async function(ev
 });
 
 let allBatches = await getBatch();
-allBatches.forEach(e => {
+let reversedBatch = allBatches.reverse();
+reversedBatch.forEach(e => {
     let option = document.createElement('option');
     option.value = e.batchname;
     option.text = e.batchname;
@@ -621,9 +622,11 @@ document.getElementById("addCourseForm").addEventListener('submit', async functi
 // ......................................................................................
 // Adding Courses to Listbox in Add Student Modal
 const courseList = await getCourses();
+
+let reversedCourseList = courseList.reverse();
 let selectCourse = document.getElementById("selectCourse");
 
-courseList.forEach(e => {
+reversedCourseList.forEach(e => {
     let option = document.createElement('option');
     option.value = e.coursename;
     option.text = e.coursename;
@@ -943,7 +946,7 @@ document.getElementById("reminderBtn").onclick = async function(event){
     let paymentSearchInput = document.getElementById("paymentSearchInput").value;
     const paymentAllStudents = await getStudents();
     let singleStudent = await paymentAllStudents.find(e => e.id === paymentSearchInput);
-    console.log(singleStudent)
+    
     
     
     let a = document.createElement('a');
@@ -1033,8 +1036,9 @@ document.getElementById("moduleModalCancel").onclick = function(){
 async function ModuleCourses(){
 let courseList = document.getElementById("courseList");
 let allCourses = await getCourses();
+let reversedallCourses = allCourses.reverse();
 
-await allCourses.forEach(e => {
+await reversedallCourses.forEach(e => {
     let courseOption = document.createElement('option');
     courseOption.value = e.coursename;
     courseOption.text = e.coursename;
@@ -1047,6 +1051,15 @@ await allCourses.forEach(e => {
 
 ModuleCourses();
 
+
+let batches = await getBatch();
+let reversedBatches = batches.reverse();
+reversedBatches.forEach(e => {
+    let option = document.createElement('option');
+    option.value = e.batchname;
+    option.text = e.batchname;
+    moduleBatch.appendChild(option);
+})
 
 
 
@@ -1228,3 +1241,199 @@ document.getElementById("followupBtn").onclick = function(){
     a.click();
 }
 
+let imSelectCourse = await getCourses();
+let reversedImCourses = imSelectCourse.reverse();
+let imCourseList = document.getElementById("imCourseList");
+
+reversedImCourses.forEach(e => {
+    let imCourseOption = document.createElement('option');
+    imCourseOption.value = e.coursename;
+    imCourseOption.text = e.coursename;
+    imCourseList.appendChild(imCourseOption);
+    
+})
+
+
+let imSelectBatch = await getBatch();
+let reversedImBatches = imSelectBatch.reverse();
+let imBatchList = document.getElementById("imBatchList");
+
+reversedImBatches.forEach(e => {
+    let imBatchOption = document.createElement('option');
+    imBatchOption.value = e.batchname;
+    imBatchOption.text = e.batchname;
+    imBatchList.appendChild(imBatchOption);
+    
+})
+
+document.getElementById("searchByCourse").onclick = async function(){
+    
+    let courseAllStudents = await getStudents();
+    let courseStudents = [];
+
+    let imCourseList = document.getElementById("imCourseList").value;
+    
+if(await courseAllStudents.find(e => e.course === imCourseList)){
+    await courseAllStudents.forEach(e => {
+        if(e.course === imCourseList){
+            courseStudents.push(e);
+        }
+    });
+    let reversedCourseStudents = courseStudents.reverse();
+    
+
+    let byCourse = document.getElementById("byCourse");
+    let byBatch = document.getElementById("byBatch");
+    byBatch.style.display = "none";
+    byCourse.style.display = "block";
+    let errM = document.getElementById("errM");
+    errM.style.display = "none";
+    let courseOrBatch = document.getElementById("courseOrBatch");
+    courseOrBatch.innerHTML = "";
+
+    reversedCourseStudents.forEach(e => {
+        let courseRow = document.createElement('tr');
+
+        let cIdCell = document.createElement('td');
+        cIdCell.textContent = e.id;
+        cIdCell.style.padding = "20px";
+        cIdCell.style.textAlign = "center";
+        cIdCell.style.border = "1px solid white";
+        courseRow.appendChild(cIdCell);
+
+        let cnameCell = document.createElement('td');
+        cnameCell.textContent = e.firstname;
+        cnameCell.style.padding = "20px";
+        cnameCell.style.textAlign = "center";
+        cnameCell.style.border = "1px solid white";
+        courseRow.appendChild(cnameCell);
+
+        let cCourseCell = document.createElement('td');
+        cCourseCell.textContent = e.course;
+        cCourseCell.style.padding = "20px";
+        cCourseCell.style.textAlign = "center";
+        cCourseCell.style.border = "1px solid white";
+        courseRow.appendChild(cCourseCell);
+
+        let cBatchCell = document.createElement('td');
+        cBatchCell.textContent = e.batch;
+        cBatchCell.style.padding = "20px";
+        cBatchCell.style.textAlign = "center";
+        cBatchCell.style.border = "1px solid white";
+        courseRow.appendChild(cBatchCell);
+
+        let cDateCell = document.createElement('td');
+        cDateCell.textContent = e.date;
+        cDateCell.style.padding = "20px";
+        cDateCell.style.textAlign = "center";
+        cDateCell.style.border = "1px solid white";
+        courseRow.appendChild(cDateCell);
+
+        let cMobileCell = document.createElement('td');
+        cMobileCell.textContent = e.mobile;
+        cMobileCell.style.padding = "20px";
+        cMobileCell.style.textAlign = "center";
+        cMobileCell.style.border = "1px solid white";
+        courseRow.appendChild(cMobileCell);
+        
+        courseOrBatch.appendChild(courseRow);
+
+
+    })
+}else{
+    byBatch.style.display = "none";
+    byCourse.style.display = "none";
+    errM.style.display = "block";
+    errM.innerText = "";
+    errM.textContent = "No students for the selected course";
+    courseOrBatch.style.textAlign = "center";
+}
+    
+}
+
+
+document.getElementById("searchByBatch").onclick = async function(){
+    
+    let batchAllStudents = await getStudents();
+    let batchStudents = [];
+
+    let imBatchList = document.getElementById("imBatchList").value;
+    
+if(await batchAllStudents.find(e => e.batch === imBatchList)){
+    await batchAllStudents.forEach(e => {
+        if(e.batch === imBatchList){
+            batchStudents.push(e);
+        }
+    });
+    let reversedBatchStudents = batchStudents.reverse();
+
+    let byCourse = document.getElementById("byCourse");
+    let byBatch = document.getElementById("byBatch");
+    byCourse.style.display = "none";
+    byBatch.style.display = "block";
+
+    let errM = document.getElementById("errM");
+    errM.style.display = "none";
+    let batchOrCourse = document.getElementById("batchOrCourse");
+    batchOrCourse.innerHTML = "";
+    
+
+    reversedBatchStudents.forEach(e => {
+        let batchRow = document.createElement('tr');
+
+        let idCell = document.createElement('td');
+        idCell.textContent = e.id;
+        idCell.style.padding = "20px";
+        idCell.style.textAlign = "center";
+        idCell.style.border = "1px solid white";
+        batchRow.appendChild(idCell);
+
+        let nameCell = document.createElement('td');
+        nameCell.textContent = e.firstname;
+        nameCell.style.padding = "20px";
+        nameCell.style.textAlign = "center";
+        nameCell.style.border = "1px solid white";
+        batchRow.appendChild(nameCell);
+
+        let courseCell = document.createElement('td');
+        courseCell.textContent = e.course;
+        courseCell.style.padding = "20px";
+        courseCell.style.textAlign = "center";
+        courseCell.style.border = "1px solid white";
+        batchRow.appendChild(courseCell);
+
+        let batchCell = document.createElement('td');
+        batchCell.textContent = e.batch;
+        batchCell.style.padding = "20px";
+        batchCell.style.textAlign = "center";
+        batchCell.style.border = "1px solid white";
+        batchRow.appendChild(batchCell);
+
+        let dateCell = document.createElement('td');
+        dateCell.textContent = e.date;
+        dateCell.style.padding = "20px";
+        dateCell.style.textAlign = "center";
+        dateCell.style.border = "1px solid white";
+        batchRow.appendChild(dateCell);
+
+        let mobileCell = document.createElement('td');
+        mobileCell.textContent = e.mobile;
+        mobileCell.style.padding = "20px";
+        mobileCell.style.textAlign = "center";
+        mobileCell.style.border = "1px solid white";
+        batchRow.appendChild(mobileCell);
+        
+        batchOrCourse.appendChild(batchRow);
+
+
+    })
+}else{
+    byBatch.style.display = "none";
+    byCourse.style.display = "none";
+    errM.style.display = "block";
+    errM.innerText = "";
+    errM.textContent = "No students for the selected batch";
+    errM.style.textAlign = "center";
+}
+    
+}

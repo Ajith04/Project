@@ -5,12 +5,14 @@ async function getAllCourses(){
 
     let allCourses = await getCourses();
 
+    let reversed = allCourses.reverse();
+
     let tbody = document.getElementById("tbody");
 
     // ...........................................................................
 // Course Table
 // Creating table rows and table data using data from db.json/courses
-    allCourses.forEach(e => {
+    reversed.forEach(e => {
         let row = document.createElement('tr');
         row.style.backgroundColor = "#80C574"
 

@@ -27,6 +27,16 @@
       "email": "1234@gmail.com",
       "address": "Jaffna",
       "description": ""
+    },
+    {
+      "id": "ef68",
+      "name": "ppppppppppp",
+      "mobile": "fewrfwefwef",
+      "course": "ewfgwreg",
+      "date": "2024-08-08",
+      "email": "sritharanajith04@gmail.com",
+      "address": "rgerg",
+      "description": ""
     }
   ],
   "students": [
@@ -54,21 +64,6 @@
       "email": "qwer@gmail.com",
       "address": "trhrth",
       "regfee": "1500.00",
-      "addifee": "0.00"
-    },
-    {
-      "id": "erfwerfg",
-      "firstname": "ergerg",
-      "lastname": "erger",
-      "course": "JavaScript",
-      "batch": "V",
-      "date": "2024-07-30",
-      "mobile": "regerg",
-      "email": "1@gmail.com",
-      "address": "rgegeg",
-      "regfee": {
-        "text": "1500.00"
-      },
       "addifee": "0.00"
     }
   ],
@@ -252,7 +247,8 @@
   ],
   "batch": [
     {
-      "batchname": "V"
+      "batchname": "V",
+      "id": "7df0"
     },
     {
       "id": "dc11",

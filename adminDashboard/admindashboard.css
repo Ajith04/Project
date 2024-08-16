@@ -724,6 +724,46 @@ background-color: #04d827;
     background-color: #04b43f;
 }
 
+.tableContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.moduleTable{
+    margin-top: 50px;
+    width: 80%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.moduleHead{
+    padding: 20px;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+    border: 1px solid white;
+}
+
+.tableHeading{
+    background-color: #D99340;
+    
+}
+
+.changeableDiv{
+    
+    display: none;
+    
+}
+
+.cOrB{
+    background-color: #04b43f;
+}
+
+.errM{
+    display: none;
+    margin-top: 20px;
+    color: #C54D4D;
+}
+
+
 
 
 

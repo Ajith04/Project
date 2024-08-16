@@ -581,18 +581,50 @@
             <h2>Course engagement</h2>
             <h3 class="wiseHead">View students by</h3>
             <label for="">Course:</label>
-            <select name="" id=""></select>
-            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="">
+            <select name="" id="imCourseList"></select>
+            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="searchByCourse">
             <label for="">Batch:</label>
-            <select name="" id=""></select>
-            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="">
+            <select name="" id="imBatchList"></select>
+            <img src="../assets/icons/search.png" alt="" width="40px" class="material-symbols-outlined editCol search paymentSearch" id="searchByBatch">
             
         </div>
 
-        <div>
-            <table></table>
-        </div>
+
+        <div class="changeableDiv" id="byCourse">
+            <table class="moduleTable cOrB">
+                <tr class="tableHeading">
+                    <th class="moduleHead">Student ID</th>
+                    <th class="moduleHead">Name</th>
+                    <th class="moduleHead">Batch</th>
+                    <th class="moduleHead">Course</th>
+                    <th class="moduleHead">Date of Join</th>
+                    <th class="moduleHead">Mobile</th>
+                </tr>
+                <tbody id="courseOrBatch">
         
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="changeableDiv" id="byBatch">
+            <table class="moduleTable cOrB">
+                <tr class="tableHeading">
+                    <th class="moduleHead">Student ID</th>
+                    <th class="moduleHead">Name</th>
+                    <th class="moduleHead">Batch</th>
+                    <th class="moduleHead">Course</th>
+                    <th class="moduleHead">Date of Join</th>
+                    <th class="moduleHead">Mobile</th>
+                </tr>
+                <tbody id="batchOrCourse">
+        
+                </tbody>
+            </table>
+        </div>
+
+    
+        <div id="errM" class="errM"></div>
         
     </div>
 
@@ -731,7 +763,7 @@
         </div>
         <div class="row">
             <div class="modalCol"><label for="duration">Batch : </label></div>
-            <div class="modalCol"><input type="text" id="moduleBatch" required></div>
+            <div class="modalCol"><select name="" id="moduleBatch" required></select></div>
         </div>
         <div class="row">
             <div class="modalCol"><label for="fee">Date : </label></div>
